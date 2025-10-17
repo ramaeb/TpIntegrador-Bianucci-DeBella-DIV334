@@ -1,0 +1,21 @@
+body{
+    background-color:red
+}
+h1{
+    color:blue;
+    display:flex;
+}
+nav li{
+    display:inline-flex;
+    margin-right:20px;
+    font-weight:bold;
+    font-size:20px;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+header{
+    display: flex;
+}
