@@ -1,21 +1,86 @@
 body{
-    background-color:red
+    font-family: "BBH Sans Bartle", sans-serif;
+    font-weight: 10;
+    font-style: normal;
 }
-h1{
-    color:blue;
-    display:flex;
-}
-nav li{
-    display:inline-flex;
-    margin-right:20px;
-    font-weight:bold;
-    font-size:20px;
-}
+/*Seccion Navegacion*/
+
 nav{
     display: flex;
-    align-items: center;
-    justify-content: right;
+    justify-content: center;
 }
-header{
+#div-nav{
+    list-style: none;
     display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+#div-titulo-e-imagen{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+#div-titulo-e-imagen a{
+    text-decoration: none;
+    color: blue;
+}
+
+#logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo img{
+    width: 50px;
+}
+#titulo-nav h1{
+    color:blue;
+}
+#titulo-nav{
+    display: flex;
+    justify-content: left;
+}
+
+/*Division de incio, sobre nosotros etc.*/
+#div-ul-li{
+    display: inline-flex;
+    justify-content: right;
+    align-items: center;
+}
+#div-ul-li ul{
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+/*
+-----------------
+Seccion Central, titulo y campo de texto donde se pone el nombre 
+-----------------
+*/
+#sect-titulo-central h1{
+    font-size: 150px;
+}
+#parrafo-titulo-central{
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+}
+#input-central{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+}
+#input-central input{
+    width: 300px;
+    height: 30px;
+}
+#boton-ingresar{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
