@@ -24,7 +24,12 @@ nav{
 }
 #div-titulo-e-imagen a{
     text-decoration: none;
-    color: #929AAB;
+    color: white;
+}
+#div-titulo-e-imagen h1{
+    text-decoration: none;
+    color: white;
+    background-color: #0078D7;
 }
 
 #logo{
@@ -66,6 +71,10 @@ Seccion Central, titulo y campo de texto donde se pone el nombre
     width: 100%;
     margin-bottom: 0;
 }
+#span-titulo-disk{
+    display: flex;
+    color:#0078D7;
+}
 #parrafo-titulo-central{
     display: flex;
     justify-content: center;
@@ -88,6 +97,7 @@ Seccion Central, titulo y campo de texto donde se pone el nombre
 #input-central input{
     width: 300px;
     height: 30px;
+    font-size: 20px;
 }
 #boton-ingresar{
     display: flex;
