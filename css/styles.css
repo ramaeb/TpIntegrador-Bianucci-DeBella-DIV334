@@ -89,12 +89,20 @@ Menu desplegable para el responsive
 }
 #div-ul-li ul a{
     text-decoration: none;
+    justify-content: center;
+    text-align: center;
     color: black;
     font-size: 1.1rem;
 }
 #div-ul-li ul a:hover{
     text-decoration: none;
     color: #0078D7;
+}
+#div-ul-li ul img{
+    width: 25px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
 }
 
 /*
@@ -270,4 +278,13 @@ nota: tener en cuenta que lo responsive va abajo del css por que si no causa con
     background-color: #0078D7;
     font-size: 5vw;
   }
+  #menu-links ul img{
+    width: 25px;
+    display: flex;
+    text-align: center;
+  }
+#menu-links ul a{
+    display: flex;
+    text-align: center;
+}
 }
