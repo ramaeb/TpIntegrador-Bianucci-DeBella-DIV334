@@ -58,7 +58,7 @@ Menu desplegable para el responsive
     text-decoration: none;
     color: white;
     background-color: #0078D7;
-    font-size: 1vw;
+    font-size: 1.3vw;
 }
 
 #logo{
@@ -97,6 +97,7 @@ Menu desplegable para el responsive
 #div-ul-li ul a:hover{
     text-decoration: none;
     color: #0078D7;
+    cursor: pointer;
 }
 #div-ul-li ul img{
     width: 25px;
@@ -148,13 +149,13 @@ Seccion Central, titulo y campo de texto donde se pone el nombre
     font-size: 20px;
 }
 /*Boton ingresar*/
-#span-boton-ingresar{
+#span-boton-ingresar, #span-boton-login{
     display: flex;
     justify-content: center;
     margin-top: 20px;
     margin-bottom: 20px;
 }
-#boton-ingresar{
+#boton-ingresar, #boton-login{
     background-color: #0078D7;
     color: white; 
     border: none;
@@ -163,7 +164,7 @@ Seccion Central, titulo y campo de texto donde se pone el nombre
     border-radius: 4px;
     cursor: pointer;
 }
-#boton-ingresar:hover{
+#boton-ingresar:hover,#boton-login:hover{
     background-color: #004479;
 }
 /*
@@ -219,7 +220,25 @@ footer{
 }
 
 
+/*=====================
+PAGINA DE LOGIN
+======================*/
 
+#titulo-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5vw;
+    width: 100%;
+    margin-top: 150px;
+    margin-bottom: 0;
+}
+#parrafo-login{
+    display: flex;
+    justify-content: center;
+    font-size: 1.5vw;
+    color : #393E46;
+}
 /* 
 RESPONSIVE 
 nota: tener en cuenta que lo responsive va abajo del css por que si no causa conflicto.
@@ -265,6 +284,7 @@ nota: tener en cuenta que lo responsive va abajo del css por que si no causa con
   }
   #menu-links li a:hover {
     color: #0078D7;
+    cursor: pointer;
   }
   #div-nav {
     position: relative;
