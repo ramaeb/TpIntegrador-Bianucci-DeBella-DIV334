@@ -27,7 +27,6 @@ function redireccionaLogin(){
     divNav.innerHTML = `<div id="div-ul-li">
                             <ul>
                                 <li><a href="index.html">Inicio</a></li>
-                                <li><a href="index.html">Sobre nosotros</a></li>
                                 <li><a onclick="redireccionaLogin()" ><img src="img\avatar.png" alt=""></a></li>
                             </ul>
                         </div>`;
@@ -36,7 +35,14 @@ function redireccionaLogin(){
                         <p id="parrafo-login">Ingresar usuario y contraseña</p>
                         <span id="input-central"><input type="text" id="input-nombre" placeholder="Usuario"></span>
                         <span id="input-central"><input type="text" id="input-nombre" placeholder="Contraseña"></span>
-                        <span id="span-boton-login"><button id="boton-login" onclick="">Ingresar</button></span>
+                        <span id="span-boton-login"><button id="boton-login" onclick="logueoAdmin()">Ingresar</button></span>
+                    </section>`;
+}
+
+//Funcion temporal para logueo admin (falta completar logica de usuario y contraseña)
+function logueoAdmin(){
+    main.innerHTML = `<section id="sect-bienvenida">
+                        <h1 id="titulo-bienvenida">Bienvenido ADMIN !</h1>
                     </section>`;
 }
 
@@ -50,9 +56,18 @@ function ingresarNombre(){
     }else{
         alert("¡Bienvenido, " + nombreUsuario + "!");
         //Redirecciona a la pagina de productos (Vemos si hacemos un innerhtml y usamos la misma pagina)
-        nombreUsuarioGuardado = localStorage.setItem("nombreUsuario", nombreUsuario);
-        redireccionaLogin();
+        const nombreUsuarioGuardado = localStorage.setItem("nombreUsuario", nombreUsuario);
+        redireccionaProductos(nombreUsuario);
     }
 }
 
+//Funcion que redirecciona a la pagina de productos, toma el nombre por parametro.
+function redireccionaProductos(nombre){
+    //Paso por parametro el nombre del usuario formato String.
+    main.innerHTML = `<section id="sect-bienvenida">
+                        <h1 id="titulo-bienvenida">Hola ${nombre}!</h1>
+                    </section>`;
+}
+
 //mostrarSaludoBienvenida();
+ 
