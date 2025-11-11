@@ -17,12 +17,15 @@ async function cargarProductos() {
 
 function mostrarProductos(productos) {
     const main = document.getElementById("main-content");
-    let htmlProductos = `<h2 class="titulo-productos">Nuestros Productos</h2>`;
+    let htmlProductos = `
+        <h2 class="titulo-productos">Nuestros Productos</h2>
+        <div class="contenedor-productos">
+    `;
 
     productos.forEach(prod => {
         htmlProductos += `
             <div class="card-producto">
-                <img src="${prod.imagen || 'img/default.png'}" alt="${prod.nombre}">
+                <img src="${prod.imagen_url}" alt="${prod.nombre}">
                 <h3>${prod.nombre}</h3>
                 <p>Precio: $${prod.precio}</p>
                 <button onclick="agregarAlCarrito(${prod.id})">Agregar al carrito</button>
@@ -30,8 +33,9 @@ function mostrarProductos(productos) {
         `;
     });
 
+    htmlProductos += `</div>`; 
+
     main.innerHTML = htmlProductos;
 }
-
 
 export { cargarProductos };

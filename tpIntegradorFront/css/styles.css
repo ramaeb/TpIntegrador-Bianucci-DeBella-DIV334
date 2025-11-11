@@ -27,9 +27,9 @@ nav{
     justify-content: center;
 }
 /*
-=====================
+====================================
 Menu desplegable para el responsive
-=====================
+====================================
 */
 #menu-toggle {
   display: none;
@@ -99,9 +99,9 @@ Menu desplegable para el responsive
 }
 
 /*
------------------
+==================================================================
 Seccion Central, titulo y campo de texto donde se pone el nombre 
------------------
+==================================================================
 */
 #sect-titulo-central h1{
     display: flex;
@@ -129,40 +129,48 @@ Seccion Central, titulo y campo de texto donde se pone el nombre
     margin-top: 10px;
     color: rgba(128, 128, 128, 0.541);
 }
-#input-central{
+
+#div-form-nombre{
     display: flex;
     justify-content: center;
-    padding: 10px;
-    border-radius: 4px;
+    align-items: center;
+    padding: 20px;
 }
-#input-central input{
-    width: 300px;
-    height: 30px;
-    font-size: 20px;
-}
-/*Boton ingresar*/
-#span-boton-ingresar{
+
+#form-nombre{
     display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    flex-direction: column; 
+    gap: 15px;              
+    align-items: center;   
 }
+
+/* Input */
+#input-nombre{
+    width: 350px;
+    height: 60px;
+    font-size: 30px;
+}
+
+/* Botón */
 #boton-ingresar{
     background-color: #0078D7;
     color: white; 
     border: none;
-    padding: 3vh 8vw;
-    font-size: 16px;
-    border-radius: 4px;
+    font-size: 30px;
+    border-radius: 5px;
     cursor: pointer;
+    width: 155px;
+    height: 60px;
 }
+
 #boton-ingresar:hover{
     background-color: #004479;
 }
+s
 /*
------------------
-Seccion PARRAFO SOBRE NOSOTROS... 
------------------
+==================================================================
+Seccion PARRAFO SOBRE NOSOTROS... (QUIENES SOMOS Y COMO COMPRAR)
+==================================================================
 */
 
 #sect-sobre-nosotros , #sect-como-comprar{
@@ -197,9 +205,9 @@ Seccion PARRAFO SOBRE NOSOTROS...
 
 
 /*
------------------
+=================
 footer... 
------------------
+=================
 */
 footer{
     display: flex;
@@ -211,6 +219,87 @@ footer{
     font-size: 12px;
 }
 
+/*
+==========================
+    LISTAR-PRODUCTOS.JS
+==========================
+*/
+.contenedor-productos {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 20px;  
+    padding: 20px;
+}
+
+.titulo-productos{
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #0078D7;
+}
+
+.card-producto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 15px;
+    width: 250px;
+    text-align: center;
+    background-color: #f8f8f8;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.card-producto:hover {
+    transform: scale(1.05);
+}
+
+.card-producto img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* TIPOGRAFIA CARDS PRODUCTOS */
+.card-producto {
+    font-family: "BBH Sans Bartle", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #242424;
+}
+
+.card-producto h3 {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color: #0078D7;
+}
+
+.card-producto p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #393E46;
+}
+
+.card-producto button {
+    background-color: #0078D7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-family: "BBH Sans Bartle", sans-serif;
+}
+
+.card-producto button:hover {
+    background-color: #004479;
+}
 
 
 /* 
