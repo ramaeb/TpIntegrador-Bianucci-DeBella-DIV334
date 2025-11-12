@@ -148,25 +148,26 @@ Seccion Central, titulo y campo de texto donde se pone el nombre
     height: 30px;
     font-size: 20px;
 }
+
 /*Boton ingresar*/
-#span-boton-ingresar, #span-boton-login{
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-#boton-ingresar, #boton-login{
-    background-color: #0078D7;
-    color: white; 
-    border: none;
-    padding: 3vh 8vw;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-#boton-ingresar:hover,#boton-login:hover{
-    background-color: #004479;
-}
+    #span-boton-ingresar, #span-boton-login{
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    #boton-ingresar, #boton-login{
+        background-color: #0078D7;
+        color: white; 
+        border: none;
+        padding: 3vh 8vw;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    #boton-ingresar:hover,#boton-login:hover{
+        background-color: #004479;
+    }
 /*
 -----------------
 Seccion PARRAFO SOBRE NOSOTROS... 
