@@ -58,8 +58,6 @@ function redireccionaLogin(){
                     </section>`;
 }
 
-<<<<<<< HEAD:tpIntegradorFront/js/main.js
-=======
 //Funcion temporal para logueo admin (falta completar logica de usuario y contraseña) muestra el CRUD luego de loguearse.
 function logueoAdmin(){
     main.innerHTML = `<section id="sect-bienvenida">
@@ -87,7 +85,6 @@ function logueoAdmin(){
     </header>`;
 
 }
->>>>>>> dabd92d699ad190ab88fccb1228300efe6e30096:js/main.js
 
 // Permitir que los botones HTML pueda llamar funciones.
 window.redireccionaLogin = redireccionaLogin;
