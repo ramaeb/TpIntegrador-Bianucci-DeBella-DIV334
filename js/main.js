@@ -39,11 +39,32 @@ function redireccionaLogin(){
                     </section>`;
 }
 
-//Funcion temporal para logueo admin (falta completar logica de usuario y contraseña)
+//Funcion temporal para logueo admin (falta completar logica de usuario y contraseña) muestra el CRUD luego de loguearse.
 function logueoAdmin(){
     main.innerHTML = `<section id="sect-bienvenida">
                         <h1 id="titulo-bienvenida">Bienvenido ADMIN !</h1>
-                    </section>`;
+                    </section>
+            <section id="sect-crud">
+            <ul id="listado-crud">
+                <a href="index.html">
+                    <li class="links-header"><span>GET</span></li>
+                </a>
+                <a href="get.html">
+                    <li class="links-header"><span>Get : id</span></li>
+                </a>
+                <a href="post.html">
+                    <li class="links-header"><span>POST</span></li>
+                </a>
+                <a href="put.html">
+                    <li class="links-header"><span>PUT</span></li>
+                </a>
+                <a href="delete.html">
+                    <li class="links-header"><span>DELETE</span></li>
+                </a>
+            </ul>
+
+    </header>`;
+
 }
 
 /*Funcion para ingresar el nombre*/
