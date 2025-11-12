@@ -16,7 +16,7 @@ async function cargarProductos() {
 }
 
 function mostrarProductos(productos) {
-    const main = document.getElementById("main-content");
+    //const main = document.getElementById("main-content");
     let htmlProductos = `
         <h2 class="titulo-productos">Nuestros Productos</h2>
         <div class="contenedor-productos">

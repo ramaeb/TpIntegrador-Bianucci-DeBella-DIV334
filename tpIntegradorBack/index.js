@@ -7,10 +7,18 @@ const app = express();
 
 const PORT = enviroments.port;
 
+
 /*=================
     Middlewares
 ===================*/
 app.use(cors());
+
+try {
+    const [result] = await connection.query("SELECT 1 + 1 AS test");
+    console.log("Conexión a la base de datos OK:", result);
+} catch (error) {
+    console.error("❌ Error al conectar con la base de datos:", error.message);
+}
 
 
 /*=================
