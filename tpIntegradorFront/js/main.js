@@ -6,8 +6,6 @@ import { cargarProductos } from "./views/listarProductos.js";
 const menuToggle = document.getElementById("menu-toggle");
 const menuLinks = document.getElementById("menu-links");
 const formularioNombre = document.getElementById("form-nombre");
-
-const divNav = document.getElementById("div-nav");
 const main = document.querySelector("main");
 
 /*=====================
@@ -23,29 +21,29 @@ document.querySelectorAll("#menu-links a").forEach(link => {
 /*===================
     FUNCIONES
 =====================*/
-function ingresarNombre() {
-    formularioNombre.addEventListener("submit", (event) => {
+//Formulario para ingresar el nombre y mostrar los productos
+formularioNombre.addEventListener("submit", (event) => {
 
-        event.preventDefault();
+    event.preventDefault();
 
-        const nombreUsuario = document.getElementById("input-nombre").value.trim();
+    const nombreUsuario = document.getElementById("input-nombre").value.trim();
 
-        // Regex para permitir solo letras (incluye acentos y ñ)
-        const regexNombre = /^[A-Za-zÁÉÍÓÚáéíóúÑñ]+$/;
+    // Regex para permitir solo letras (incluye acentos y ñ)
+    const regexNombre = /^[A-Za-zÁÉÍÓÚáéíóúÑñ]+$/;
 
-        // Validación
-        if (nombreUsuario === "" || !regexNombre.test(nombreUsuario)) {
-            alert("Por favor, ingresa un nombre válido (solo letras).");
-            return;
-        }
+    // Validación
+    if (nombreUsuario === "" || !regexNombre.test(nombreUsuario)) {
+        alert("Por favor, ingresa un nombre válido (solo letras).");
+        return;
+    }
 
-        // Guardar en LocalStorage
-        localStorage.setItem("nombreUsuario", nombreUsuario);
+    // Guardar en LocalStorage
+    localStorage.setItem("nombreUsuario", nombreUsuario);
 
-        // Redireccionar o cargar productos
-        cargarProductos();
-    });
-}
+    // Redireccionar o cargar productos
+    cargarProductos();
+});
+
 
 //Logueo temporal de admin
 function redireccionaLogin() {
@@ -97,15 +95,6 @@ function logueoAdmin(){
 
 }
 
-/*===================
-    FUNCION INITs
-=====================*/
-
-function init(){
-    ingresarNombre(); 
-}
-
-init();
 
 // Permitir que los botones HTML pueda llamar funciones.
 window.redireccionaLogin = redireccionaLogin;
