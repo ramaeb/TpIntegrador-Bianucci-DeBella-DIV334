@@ -11,6 +11,7 @@ const PORT = enviroments.port;
     Middlewares
 ===================*/
 app.use(cors());
+//parseo de json
 app.use(express.json());  
 
 /*=================
