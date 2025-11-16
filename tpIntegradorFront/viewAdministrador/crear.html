@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP Integrador front</title>
+
+</head>
+<body>
+     <header>
+        <nav>
+            <ul>
+                <a href="index.html">
+                    <li>Ver</li>
+                </a>
+                <a href="consultar.html">
+                    <li>Consultar id</li>
+                </a>
+                <a href="crear.html">
+                    <li>Crear</li> 
+                </a>
+                <a href="modificar.html">
+                    <li>Modificar</li>
+                </a>
+                <a href="eliminar.html">
+                    <li>Eliminar</li>
+                </a>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1> Crear Producto </h1>
+        <hr>
+        <form id="crearProducto-form">
+            <label for="idProd">Id del producto</label>
+            <input id="nombre" type="text" placeholder="Nombre" required>
+            <input id="descripcion" type="text" placeholder="Descripcion" required>
+            <input id="precio" type="number" placeholder="Precio" required>
+            <input id="categoria" type="text" placeholder="Categoria" required>
+            <input id="imagen" type="text" placeholder="Imagen URL" required>
+            <input id="estado" type="checkbox">
+            <input type="submit" value="Crear producto">
+            <!-- `id` int(11) NOT NULL,
+            `nombre` varchar(100) NOT NULL,
+            `descripcion` text NOT NULL,
+            `precio` float(10,0) NOT NULL,
+            `categoria` varchar(50) NOT NULL,
+            `imagen_url` varchar(255) NOT NULL,
+            `estado` tinyint(1) NOT NULL ! !!! -->
+        </form>
+
+        <div id="contenedor-productos">
+            <ul id="lista-productos"></ul>
+        </div>
+    </main>
+
+    <script>
+        let getProduct_form = document.getElementById("crearProducto-form");
+        let listaProductos = document.getElementById("lista-productos");
+        let url = "http://localhost:3000/products";
+
+        //agarramos la informacion del formulario.
+       
+
+        //luego del boton crear hacemos... :
+        getProduct_form.addEventListener("submit", async (event) => {
+            let nuevoProducto = {
+                nombre: document.getElementById("nombre").value,
+                descripcion: document.getElementById("descripcion").value,
+                precio: document.getElementById("precio").value,
+                categoria: document.getElementById("categoria").value,
+                imagen_url: document.getElementById("imagen").value,
+                estado: document.getElementById("estado").checked ? 1 : 0
+            };
+            event.preventDefault();
+
+            //Fetch para crear el producto:
+            respuesta = await fetch("http://localhost:3000/products", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(nuevoProducto)
+            });
+            data = await respuesta.json();
+            console.log(data);
+
+            
+        });
+
+            
+    </script>
+</body>
+</html>

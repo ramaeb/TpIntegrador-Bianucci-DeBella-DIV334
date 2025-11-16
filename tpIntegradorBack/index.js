@@ -11,7 +11,7 @@ const PORT = enviroments.port;
     Middlewares
 ===================*/
 app.use(cors());
-
+app.use(express.json());  
 
 /*=================
     Endpoints
@@ -55,6 +55,27 @@ app.get("/products/:id", async (req, res) => {
     } catch (error) {
         console.error(`Error obteniendo producto con id ${id}`, error.message);
         res.status(500).json({ error: "Error interno del servidor" });
+    }
+});
+
+
+// Crear producto.
+app.post("/products",async (req, res) => {
+    try
+    {
+      const {nombre,descripcion,precio,categoria,imagen_url,estado} = req.body;
+      //consulta sql
+      const sql = "INSERT INTO productos (nombre,descripcion,precio,categoria,imagen_url,estado) VALUES (?, ?, ?, ?, ?,?)";
+      //query remplazando los valores 
+      const [result] = await connection.query(sql, [nombre,descripcion,precio,categoria,imagen_url,estado]);
+        
+      res.status(201).json({
+        message: "Producto creado exitosamente",
+        id_generado: result.insertId
+      })
+    } catch (error) {   
+        console.error("Error creando producto:", error.message);
+        res.status(500).json({ message: "Error interno del servidor" });
     }
 });
 
