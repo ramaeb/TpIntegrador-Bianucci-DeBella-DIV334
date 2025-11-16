@@ -11,7 +11,7 @@ const PORT = enviroments.port;
     Middlewares
 ===================*/
 app.use(cors());
-//parseo de json
+//parseo de jsongit commit -m "Tu mensaje de commit"
 app.use(express.json());  
 
 /*=================
