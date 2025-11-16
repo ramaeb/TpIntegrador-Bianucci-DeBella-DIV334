@@ -7,18 +7,10 @@ const app = express();
 
 const PORT = enviroments.port;
 
-
 /*=================
     Middlewares
 ===================*/
 app.use(cors());
-
-try {
-    const [result] = await connection.query("SELECT 1 + 1 AS test");
-    console.log("Conexión a la base de datos OK:", result);
-} catch (error) {
-    console.error("❌ Error al conectar con la base de datos:", error.message);
-}
 
 
 /*=================
@@ -52,11 +44,20 @@ app.get("/products/:id", async (req, res) => {
     try {
         let { id } = req.params;
 
+        let sql = "SELECT * FROM productos WHERE productos.id = ?";
+
+        let [rows] = await connection.query(sql, [id])
+
+        res.status(200).json({
+            payload: rows
+        });
         
     } catch (error) {
-        console.error('Error obtiniendo prodctos con id ${id}', error.message)
+        console.error(`Error obteniendo producto con id ${id}`, error.message);
+        res.status(500).json({ error: "Error interno del servidor" });
     }
-})
+});
+
 
 app.listen(PORT, () => {
     console.log(`servidor corriendo en el puerto ${PORT}`);

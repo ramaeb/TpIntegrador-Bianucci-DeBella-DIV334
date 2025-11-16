@@ -5,12 +5,13 @@ html {
 }
 
 body{
-    display: flexbox;
+    display: block;
     background-color: #F7F7F7;
     font-family: "BBH Sans Bartle", sans-serif;
     font-weight: 10;
     font-style: normal;
 }
+
 /*
 ======================
 Seccion Navegacion
@@ -39,6 +40,7 @@ Menu desplegable para el responsive
 #menu-links {
     display: none;
 }
+
 #div-nav{
     list-style: none;
     display: flex;
@@ -46,11 +48,13 @@ Menu desplegable para el responsive
     width: 99%;
     justify-content: space-between;
 }
+
 #div-titulo-e-imagen{
     display: flex;
     align-items: center;
     justify-content: left;
 }
+
 #div-titulo-e-imagen a{
     text-decoration: none;
     color: white;
@@ -59,7 +63,7 @@ Menu desplegable para el responsive
     text-decoration: none;
     color: white;
     background-color: #0078D7;
-    font-size: 1.3vw;
+    font-size: 1vw;
 }
 
 #logo{
@@ -90,33 +94,113 @@ Menu desplegable para el responsive
 }
 #div-ul-li ul a{
     text-decoration: none;
-    justify-content: center;
-    text-align: center;
     color: black;
     font-size: 1.1rem;
 }
 #div-ul-li ul a:hover{
     text-decoration: none;
     color: #0078D7;
+}
+
+/* Avatar (icono de usuario en el navbar) */
+#avatar-login {
+    width: 40px;
+    height: auto;
+    object-fit: cover;
     cursor: pointer;
 }
-#div-ul-li ul img{
-    width: 25px;
+
+/*=====================
+PAGINA DE LOGIN
+======================*/
+#sect-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    margin: 0px;
+    max-width: 100%;
+    height: 80vh;
+}
+
+#titulo-login {
     display: flex;
     justify-content: center;
-    text-align: center;
+    align-items: center;
+    font-size: 5vw;
+    color: #0078D7;
+    margin-bottom: 10px;
 }
-#div-ul-li ul img{
-    width: 25px;
+
+#parrafo-login {
     display: flex;
     justify-content: center;
-    text-align: center;
+    font-size: 1.5vw;
+    color: rgba(57, 62, 70, 0.8);
+    margin-bottom: 30px;
 }
+
+#form-login {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.input-login {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.input-login input {
+    width: 100%;
+    padding: 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: "BBH Sans Bartle", sans-serif;
+}
+
+.boton-login {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.boton-login button {
+    background-color: #0078D7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-family: "BBH Sans Bartle", sans-serif;
+}
+
+.boton-login button:hover {
+    background-color: #004479;
+}
+
+
 /*
 ==================================================================
 Seccion Central, titulo y campo de texto donde se pone el nombre 
 ==================================================================
 */
+#sect-titulo-central{
+    display: block;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    width: 100%;
+    height: 100vh;
+}
+
 #sect-titulo-central h1{
     display: flex;
     justify-content: center;
@@ -125,6 +209,7 @@ Seccion Central, titulo y campo de texto donde se pone el nombre
     width: 100%;
     margin-top: 150px;
     margin-bottom: 0;
+    height: auto;
 }
 #span-titulo-disk{
     display: flex;
@@ -165,95 +250,35 @@ Seccion Central, titulo y campo de texto donde se pone el nombre
     font-size: 30px;
 }
 
-
-/*Boton ingresar*/
-    #span-boton-ingresar, #span-boton-login{
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-    #boton-ingresar, #boton-login{
-        background-color: #0078D7;
-        color: white; 
-        border: none;
-        padding: 3vh 8vw;
-        font-size: 16px;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-    #boton-ingresar:hover,#boton-login:hover{
-        background-color: #004479;
-    }
-
-#sect-titulo-central h1{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 8vw;
-    width: 100%;
-    margin-top: 150px;
-    margin-bottom: 0;
-}
-#span-titulo-disk{
-    display: flex;
-    color:#0078D7;
-}
-#parrafo-titulo-central{
-    display: flex;
-    justify-content: center;
-    font-size: 1.5vw;
-    color : #393E46;
-}
-#parrafo-titulo-ingresa-nombre{
-    display: flex;
-    justify-content: center;
-    font-size: 2vw;
-    margin-top: 10px;
-    color: rgba(128, 128, 128, 0.541);
-}
-#input-central{
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    border-radius: 4px;
-}
-#input-central input{
-    width: 300px;
-    height: 30px;
-    font-size: 20px;
+/* Botón */
+#boton-ingresar{
+    background-color: #0078D7;
+    color: white; 
+    border: none;
+    font-size: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 155px;
+    height: 60px;
 }
 
-/*Boton ingresar*/
-    #span-boton-ingresar, #span-boton-login{
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-    #boton-ingresar, #boton-login{
-        background-color: #0078D7;
-        color: white; 
-        border: none;
-        padding: 3vh 8vw;
-        font-size: 16px;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-    #boton-ingresar:hover,#boton-login:hover{
-        background-color: #004479;
-    }
+#boton-ingresar:hover{
+    background-color: #004479;
+}
+s
 /*
 ==================================================================
 Seccion PARRAFO SOBRE NOSOTROS... (QUIENES SOMOS Y COMO COMPRAR)
 ==================================================================
 */
 
-#sect-sobre-nosotros , #sect-como-comprar{
+#sect-sobre-nosotros,#sect-como-comprar{
     display: block;
     margin-top: 150px;
     margin-bottom: 100px;
-    width: 100%;
+    max-width: 100%;
+    height: auto;
+    padding: 150px;
 }
 
 #sect-sobre-nosotros h2,#sect-como-comprar h2{
@@ -266,11 +291,7 @@ Seccion PARRAFO SOBRE NOSOTROS... (QUIENES SOMOS Y COMO COMPRAR)
     margin-bottom: 20px;
     color: #0078D7;
 }
-#span-sobre-nosotros-parrafo{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
 #sect-sobre-nosotros p,#sect-como-comprar p{
     font-size: 1rem;
     align-content: center;
@@ -295,25 +316,6 @@ footer{
     font-size: 12px;
 }
 
-/*=====================
-PAGINA DE LOGIN
-======================*/
-
-#titulo-login{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 5vw;
-    width: 100%;
-    margin-top: 150px;
-    margin-bottom: 0;
-}
-#parrafo-login{
-    display: flex;
-    justify-content: center;
-    font-size: 1.5vw;
-    color : #393E46;
-}
 
 /*
 ==========================
@@ -344,6 +346,7 @@ PAGINA DE LOGIN
     border-radius: 10px;
     padding: 15px;
     width: 250px;
+    height: auto;
     text-align: center;
     background-color: #f8f8f8;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
@@ -359,6 +362,8 @@ PAGINA DE LOGIN
     height: auto;
     border-radius: 8px;
 }
+
+
 
 /* TIPOGRAFIA CARDS PRODUCTOS */
 .card-producto {
@@ -381,7 +386,8 @@ PAGINA DE LOGIN
     color: #393E46;
 }
 
-.card-producto button {
+.btn-carrito, .btn-detalles{
+    margin: 5px;
     background-color: #0078D7;
     color: white;
     border: none;
@@ -397,25 +403,7 @@ PAGINA DE LOGIN
     background-color: #004479;
 }
 
-/*=====================
-PAGINA DE LOGIN
-======================*/
 
-#titulo-login{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 5vw;
-    width: 100%;
-    margin-top: 150px;
-    margin-bottom: 0;
-}
-#parrafo-login{
-    display: flex;
-    justify-content: center;
-    font-size: 1.5vw;
-    color : #393E46;
-}
 /* 
 RESPONSIVE 
 nota: tener en cuenta que lo responsive va abajo del css por que si no causa conflicto.
@@ -485,3 +473,4 @@ nota: tener en cuenta que lo responsive va abajo del css por que si no causa con
     text-align: center;
 }
 }
+

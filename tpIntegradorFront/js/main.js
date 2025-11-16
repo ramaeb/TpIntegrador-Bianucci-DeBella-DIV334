@@ -5,13 +5,10 @@ import { cargarProductos } from "./views/listarProductos.js";
 =======================*/
 const menuToggle = document.getElementById("menu-toggle");
 const menuLinks = document.getElementById("menu-links");
-const formNombre = document.getElementById("input-nombre");
-const botonIngresar = document.getElementById("boton-ingresar");
-let main = document.getElementById("main");
-let divNav = document.getElementById("div-ul-li");
-const divSaludoBienvenida = document.getElementById("div-saludo-bienvenida");
-let nombreUsuarioGuardado = localStorage.getItem("nombreUsuario");
+const formularioNombre = document.getElementById("form-nombre");
 
+const divNav = document.getElementById("div-nav");
+const main = document.querySelector("main");
 
 /*=====================
   MENU RESPONSIVE
@@ -26,36 +23,50 @@ document.querySelectorAll("#menu-links a").forEach(link => {
 /*===================
     FUNCIONES
 =====================*/
-/*Funcion para ingresar el nombre*/
-function ingresarNombre(){
-    let nombreUsuario = formNombre.value;
-    //Faltaria un regex para validar nombres raros o con numeros etc.
-    const regexNombre = /^[A-Za-zÁÉÍÓÚáéíóúÑñ]+$/;
-    if (nombreUsuario === "" || !regexNombre.test(nombreUsuario)) {
-        alert("Por favor, ingresa un nombre válido (solo letras).");
-    }else{
-        alert("¡Bienvenido, " + nombreUsuario + "!");
-        //Redirecciona a la pagina de productos (Vemos si hacemos un innerhtml y usamos la misma pagina)
-        const nombreUsuarioGuardado = localStorage.setItem("nombreUsuario", nombreUsuario);
+function ingresarNombre() {
+    formularioNombre.addEventListener("submit", (event) => {
+
+        event.preventDefault();
+
+        const nombreUsuario = document.getElementById("input-nombre").value.trim();
+
+        // Regex para permitir solo letras (incluye acentos y ñ)
+        const regexNombre = /^[A-Za-zÁÉÍÓÚáéíóúÑñ]+$/;
+
+        // Validación
+        if (nombreUsuario === "" || !regexNombre.test(nombreUsuario)) {
+            alert("Por favor, ingresa un nombre válido (solo letras).");
+            return;
+        }
+
+        // Guardar en LocalStorage
+        localStorage.setItem("nombreUsuario", nombreUsuario);
+
+        // Redireccionar o cargar productos
         cargarProductos();
-    }
+    });
 }
- 
+
 //Logueo temporal de admin
-function redireccionaLogin(){
-    divNav.innerHTML = `<div id="div-ul-li">
-                            <ul>
-                                <li><a href="index.html">Inicio</a></li>
-                                <li><a onclick="redireccionaLogin()" ><img src="img\avatar.png" alt=""></a></li>
-                            </ul>
-                        </div>`;
-    main.innerHTML = `<section id="sect-login">
-                        <h1 id="titulo-login">Bienvenido</h1>
-                        <p id="parrafo-login">Ingresar usuario y contraseña</p>
-                        <span id="input-central"><input type="text" id="input-nombre" placeholder="Usuario"></span>
-                        <span id="input-central"><input type="text" id="input-nombre" placeholder="Contraseña"></span>
-                        <span id="span-boton-login"><button id="boton-login" onclick="logueoAdmin()">Ingresar</button></span>
-                    </section>`;
+function redireccionaLogin() {
+     main.innerHTML = `
+        <section id="sect-login">
+            <h1 id="titulo-login">Bienvenido</h1>
+            <p id="parrafo-login">Ingresar usuario y contraseña</p>
+
+            <form id="form-login" onsubmit="logueoAdmin(); return false;">
+                <div class="input-login">
+                    <input type="text" id="input-usuario" placeholder="Usuario" required>
+                </div>
+                <div class="input-login">
+                    <input type="password" id="input-password" placeholder="Contraseña" required>
+                </div>
+                <div class="boton-login">
+                    <button type="submit" id="boton-login">Ingresar</button>
+                </div>
+            </form>
+        </section>
+    `;
 }
 
 //Funcion temporal para logueo admin (falta completar logica de usuario y contraseña) muestra el CRUD luego de loguearse.
@@ -85,6 +96,16 @@ function logueoAdmin(){
     </header>`;
 
 }
+
+/*===================
+    FUNCION INITs
+=====================*/
+
+function init(){
+    ingresarNombre(); 
+}
+
+init();
 
 // Permitir que los botones HTML pueda llamar funciones.
 window.redireccionaLogin = redireccionaLogin;

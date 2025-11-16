@@ -1,3 +1,4 @@
+
 async function cargarProductos() {
     try {
         const response = await fetch("http://localhost:3000/products");
@@ -16,7 +17,7 @@ async function cargarProductos() {
 }
 
 function mostrarProductos(productos) {
-    //const main = document.getElementById("main-content");
+    const main = document.getElementById("main");
     let htmlProductos = `
         <h2 class="titulo-productos">Nuestros Productos</h2>
         <div class="contenedor-productos">
@@ -28,7 +29,8 @@ function mostrarProductos(productos) {
                 <img src="${prod.imagen_url}" alt="${prod.nombre}">
                 <h3>${prod.nombre}</h3>
                 <p>Precio: $${prod.precio}</p>
-                <button onclick="agregarAlCarrito(${prod.id})">Agregar al carrito</button>
+                <button class="btn-carrito" onclick="agregarAlCarrito(${prod.id})">Agregar al carrito</button>
+                <button class="btn-detalles" onclick="cargarDetallesProductos(${prod.id})">Ver detalles</button>
             </div>
         `;
     });
