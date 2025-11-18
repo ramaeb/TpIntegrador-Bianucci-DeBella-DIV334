@@ -5,35 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TP Integrador front</title>
 
-    
+    <link rel="stylesheet" href="../css/dashboard.css">
 
 </head>
 <body>
-     <header>
-        <nav>
-            <ul>
-                <a href="index.html">
-                    <li>Ver</li>
-                </a>
-                <a href="consultar.html">
-                    <li>Consultar id</li>
-                </a>
-                <a href="crear.html">
-                    <li>Crear</li>
-                </a>
-                <a href="modificar.html">
-                    <li>Modificar</li>
-                </a>
-                <a href="eliminar.html">
-                    <li>Eliminar</li>
-                </a>
+    <header class="admin-header">
+        <nav class="admin-nav">
+            <ul class="admin-nav-list">
+                <li class="admin-nav-item"><a class="admin-nav-link" href="index.html">Ver</a></li>
+                <li class="admin-nav-item"><a class="admin-nav-link" href="consultar.html">Consultar id</a></li>
+                <li class="admin-nav-item"><a class="admin-nav-link" href="crear.html">Crear</a></li>
+                <li class="admin-nav-item"><a class="admin-nav-link" href="modificar.html">Modificar</a></li>
+                <li class="admin-nav-item"><a class="admin-nav-link" href="eliminar.html">Eliminar</a></li>
             </ul>
         </nav>
     </header>
-    <main>
-        <h1>Lista de productos</h1>
-        <hr>
-        <div id="contenedor-productos"></div>
+
+    <main class="admin-products-page">
+        <h1 class="admin-products-title">LISTA DE PRODUCTOS</h1>
+        <hr class="admin-products-divider">
+        <div class="admin-products-container" id="contenedor-productos"></div>
     </main>
 
     <script>
@@ -42,22 +33,18 @@
         async function obtenerProductos() {
             try {
                 let respuesta = await fetch("http://localhost:3000/products");
-                console.log(respuesta);
 
                 let data = await respuesta.json();
-                // console.log(data);
+                
 
                 if(respuesta.ok) {
-                    // console.log(data.message);
                     
                     let productos = data.payload;
-    
-                    // console.table(productos);
     
                     mostrarProductos(productos);
 
                 } else {
-                    alert("Error obteniendo productos")
+                    alert(data.message)
                 }
 
 
@@ -72,15 +59,14 @@
             productos.forEach(prod => {
                 htmlProductos += `
                     <div class="card-producto">
-                        <img src="${prod.imagen}" alt="${prod.nombre}">
-                        <h5>${prod.nombre}</h5>
+                        <img src="${prod.imagen_url}" alt="${prod.nombre}">
                         <p>Id: ${prod.id}</p>
+                        <h5>${prod.nombre}</h5>
                         <p>$${prod.precio}</p>
                     </div>
                 `;
-
-                contenedorProductos.innerHTML = htmlProductos;
             })
+            contenedorProductos.innerHTML = htmlProductos;
         }
 
         function init() {
