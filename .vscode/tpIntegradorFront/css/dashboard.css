@@ -1,0 +1,280 @@
+/* ============================= */
+/*      ESTILOS GENERALES        */
+/* ============================= */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1e1e1e;
+    margin: 0px;
+}
+
+/* Linea horizontal */
+.admin-products-divider {
+    border: none;               
+    height: 3px;                
+    background-color: white;          
+    width: 80%;                 
+    border-radius: 2px;
+           
+}
+
+/* ============================= */
+/*        NAVEGACIÓN             */
+/* ============================= */
+.admin-nav{
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    margin-top: 15px;
+}
+
+.admin-nav-list {
+    list-style: none; 
+    display: flex; 
+    gap: 30px;
+    padding: 0; 
+    margin: 0;  
+}
+
+.admin-nav-link {
+    text-decoration: none; 
+    color: #ffffff; 
+    font-weight: 600;
+    font-size: 1.7rem;
+}
+
+.admin-nav-link:hover {
+    color: #00aaff; 
+}
+
+/* ============================= */
+/*         TÍTULO PRINCIPAL       */
+/* ============================= */
+.admin-products-title {
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+    color: white;
+    padding: 10px;
+    margin-top: 40px;
+}
+
+/* ==================================== */
+/*         CONTENEDOR DE PRODUCTOS */
+/* ===================================== */
+.admin-products-container {
+    display: flex;                   
+    flex-wrap: wrap;                 
+    gap: 15px;                       
+    justify-content: center;         
+    padding: 20px;   
+}
+
+/* ============================= */
+/*             TARJETAS           */
+/* ============================= */
+.card-producto {
+    background-color: #2c2c2c;       
+    color: #fff;                     
+    border-radius: 8px;              
+    padding: 15px;                 
+    width: 200px;                    
+    text-align: center;              
+    font-size: 1.6rem;
+}
+
+.card-producto img {
+    max-width: 100%;                 
+    border-radius: 5px;              
+    margin-bottom: 0px;             
+}
+
+.estado-activo {
+    color: green;
+    font-weight: bold;
+}
+
+.estado-inactivo {
+    color: red;
+    font-weight: bold;
+}
+
+/* =====================================*/
+/*        FORMULARIO CONSULTAR.HTML    */
+/* ==================================== */
+
+/* Contenedor del formulario */
+#formulario-id {
+    display: flex;
+    justify-content: center;  
+    align-items: center;      
+    margin-top: 30px;
+    padding: 20px;
+}
+
+#getProduct-form {
+    display: flex;            
+    gap: 10px;                
+}
+
+/* Label */
+#getProduct-form label {
+    color: #ffffff;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+/* Input */
+#getProduct-form input[type="number"] {
+    padding: 8px;
+    font-size: 2rem;
+    border-radius: 5px;
+    border: 1px solid #00aaff;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    width: 190px;
+    height: 40px;
+}
+
+/* Botón */
+#getProduct-form button {
+    padding: 10px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #00aaff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#getProduct-form button:hover {
+    background-color: #0088cc;
+}
+
+
+/* ============================= */
+/*   FORMULARIO MODIFICAR.HTML        */
+/* ============================= */
+
+#div-formulario-modificar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    padding: 20px;
+}
+
+#formulario-modificar {
+    background-color: #2c2c2c;
+    padding: 25px;
+    border-radius: 10px;
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Labels */
+#formulario-modificar label {
+    color: #ffffff;
+    font-size: 1.6rem;
+}
+
+/* Inputs */
+
+#crearProducto-form input, #crearProducto-form textarea, #crearProducto-form input select, #crearProducto-form select,   #formulario-modificar input,
+#formulario-modificar textarea, #estado-span,
+#formulario-modificar select {
+    padding: 10px;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    border: 1px solid #00aaff;
+    background-color: #1e1e1e;
+    color: white;
+}
+
+/* Textarea */
+#formulario-modificar textarea {
+    resize: vertical;
+}
+
+/* Botón */
+.boton-modificar {
+    padding: 12px;
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #00aaff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.boton-modificar:hover {
+    background-color: #0088cc;
+}
+
+/* ============================= */
+/*   FORMULARIO CREAR.HTML        */
+/* ============================= */
+#crearProducto-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #2c2c2c;
+    padding: 25px;
+    border-radius: 10px;
+    width: 450px;
+    margin: 30px auto;
+}
+/*Titulo*/
+/*Boton CREAR*/
+#boton-span input{
+    padding: 12px;
+    font-size: 3rem;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #00aaff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+#boton-crear:hover {
+    background-color: #0088cc;
+}
+#estado-span{
+    display: flex;
+    font-size: 5vh;
+}
+#estado-span input{
+    display: flex;
+    justify-content: center;
+    align-items: right;
+}
+#boton-span{
+    display: flex;
+    justify-content: center;
+}
+
+/* ============================= */
+/*   FORMULARIO ELIMINAR.HTML        */
+/* ============================= */
+
+.boton-baja{
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #be1c1c;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
