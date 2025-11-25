@@ -65,10 +65,67 @@ app.get("/products/:id", validateId, async (req, res) => {
 });
 
 //POST => Crear un nuevo producto
+app.post("/products",async (req, res) => {
+    try
+    {
+      const {nombre,descripcion,precio,categoria,imagen_url,estado} = req.body;
+      //consulta sql
+      const sql = "INSERT INTO productos (nombre,descripcion,precio,categoria,imagen_url,estado) VALUES (?, ?, ?, ?, ?,?)";
+      //query remplazando los valores 
+      const [result] = await connection.query(sql, [nombre,descripcion,precio,categoria,imagen_url,estado]);
+        
+      res.status(201).json({
+        message: "Producto creado exitosamente",
+        id_generado: result.insertId
+      })
+    } catch (error) {   
+        console.error("Error creando producto:", error.message);
+        res.status(500).json({ message: "Error interno del servidor" });
+    }
+});
 
-//FALTA ESTO
+//POST => DAR BAJA AL PRODUCTO (BAJA LOGICA)
+app.put("/products/baja/:id", async (req, res) => {
+    try {
+        let { id } = req.params;
+        //Optimizar id
+        let sql = "UPDATE productos SET estado = 0 WHERE id = ?";
 
+        let [result] = await connection.query(sql, [id])
 
+        res.status(200).json({
+            ok: true,
+            message: "Producto bajado correctamente;"
+        });
+
+    } catch (error) {
+        console.error(`Error en la baja ${id}`, error.message);
+        res.status(500).json({ ok:false, error: "Error interno del servidor" });
+    }
+});
+
+//POST => ELIMINAR PRODUCTO (ELIMINACION TOTAL)
+app.put("/products/eliminar/:id", async (req, res) => {
+    try {
+        let { id } = req.params;
+        //Optimizar id
+        let sql = "DELETE FROM productos WHERE id = ?";
+
+        let [result] = await connection.query(sql, [id])
+
+        res.status(200).json({
+            ok: true,
+            message: "Producto eliminado correctamente;"
+        });
+
+    } catch (error) {
+        console.error(`Error en la eliminacion ${id}`, error.message);
+        res.status(500).json({
+             ok:false,
+             error: "Error interno del servidor"
+        });
+    }
+});
 //UPDATE => Actualizar productos
 app.put("/products", async (req, res) => {
 

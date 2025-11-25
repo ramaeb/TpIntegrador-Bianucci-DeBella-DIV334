@@ -88,6 +88,16 @@ body {
     margin-bottom: 0px;             
 }
 
+.estado-activo {
+    color: green;
+    font-weight: bold;
+}
+
+.estado-inactivo {
+    color: red;
+    font-weight: bold;
+}
+
 /* =====================================*/
 /*        FORMULARIO CONSULTAR.HTML    */
 /* ==================================== */
@@ -173,10 +183,10 @@ body {
 }
 
 /* Inputs */
-#formulario-modificar input,
-#formulario-modificar textarea,
+
+#crearProducto-form input, #crearProducto-form textarea, #crearProducto-form input select, #crearProducto-form select,   #formulario-modificar input,
+#formulario-modificar textarea, #estado-span,
 #formulario-modificar select {
-    width: 90%;
     padding: 10px;
     font-size: 1.5rem;
     border-radius: 5px;
@@ -206,4 +216,65 @@ body {
 
 .boton-modificar:hover {
     background-color: #0088cc;
+}
+
+/* ============================= */
+/*   FORMULARIO CREAR.HTML        */
+/* ============================= */
+#crearProducto-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #2c2c2c;
+    padding: 25px;
+    border-radius: 10px;
+    width: 450px;
+    margin: 30px auto;
+}
+/*Titulo*/
+/*Boton CREAR*/
+#boton-span input{
+    padding: 12px;
+    font-size: 3rem;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #00aaff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+#boton-crear:hover {
+    background-color: #0088cc;
+}
+#estado-span{
+    display: flex;
+    font-size: 5vh;
+}
+#estado-span input{
+    display: flex;
+    justify-content: center;
+    align-items: right;
+}
+#boton-span{
+    display: flex;
+    justify-content: center;
+}
+
+/* ============================= */
+/*   FORMULARIO ELIMINAR.HTML        */
+/* ============================= */
+
+.boton-baja{
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #be1c1c;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
 }
