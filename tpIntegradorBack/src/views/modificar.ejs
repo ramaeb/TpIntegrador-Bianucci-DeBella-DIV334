@@ -1,0 +1,24 @@
+<%- include("partials/head.ejs") %>
+<%- include("partials/nav.ejs") %>
+
+    <main class="admin-products-page">
+        <h1 class="admin-products-title">MODIFICAR PRODUCTO</h1>
+        <hr class="admin-products-divider">
+
+        <div id="formulario-id"> 
+        <form id="getProduct-form">
+        <label for="idProd">Id del producto</label>
+        <input type="number" name="idProd" id="idProd" required>
+
+        <button type="submit">Consultar producto</button>
+        </form>
+        </div>
+
+        <div class="admin-products-container" id="contenedor-productos"></div>
+
+        <div class="admin-products-container" id="modificar-producto"></div>
+    </main>
+
+    <script src="../js/modificar.js"></script>
+
+<%- include("partials/footer.ejs") %>
