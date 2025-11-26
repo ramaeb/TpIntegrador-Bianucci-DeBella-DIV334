@@ -1,0 +1,33 @@
+<%- include("partials/head.ejs") %>
+<%- include("partials/nav.ejs") %>
+
+    <main class="admin-products-page">
+       <h1 class="admin-products-title"> Crear Producto </h1>
+       <hr class="admin-products-divider">
+        <form id="crearProducto-form">
+            <input id="nombre" type="text" placeholder="Nombre" required>
+            <input id="descripcion" type="text" placeholder="Descripcion" required>
+            <input id="precio" type="number" placeholder="Precio" required>
+            <input id="categoria" type="text" placeholder="Categoria" required>
+            <input id="imagen" type="text" placeholder="Imagen URL" required>
+            <select id="estado" name="select">
+                <option value="1">Activo</option>
+                <option value="0" selected>Inactivo</option>
+            </select>
+            <span id="boton-span"><input id="boton-crear"type="submit" value="Crear producto"></span>
+            <!-- `id` int(11) NOT NULL,
+            `nombre` varchar(100) NOT NULL,
+            `descripcion` text NOT NULL,
+            `precio` float(10,0) NOT NULL,
+            `categoria` varchar(50) NOT NULL,
+            `imagen_url` varchar(255) NOT NULL,
+            `estado` tinyint(1) NOT NULL ! !!! -->
+        </form>
+
+        <div id="contenedor-productos">
+            <ul id="lista-productos"></ul>
+        </div>
+    </main>
+
+    <script src="../js/crear.js"></script>
+<%- include("partials/footer.ejs") %>
