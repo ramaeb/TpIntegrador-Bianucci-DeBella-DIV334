@@ -57,8 +57,54 @@ const putUpdateProduct = async (req, res) => {
     }
 }
 
+//PUT => Baja lógica de productos
+const putLogicDeleteProduct = async (req,res) =>{
+    try{
+        let {id} = req.params; //El id se obtiene desde los parametros NO Desde el BODY OK!!
+        let [result] = await ProductModel.logicDeleteProduct(id);
+
+        res.status(200).json({
+            ok:true,
+            message: "Producto dado de baja correctamente"
+        })
+
+    }catch(error){
+        res.status(500).json({ok:false,message:"Error interno del servidor", error})
+    }
+}
+
+//POST => Crear producto
+const postCreateProduct = async (req,res)=>{
+    try{
+        let {nombre, imagen_url, precio, categoria, descripcion, estado} = req.body;
+        let [result] = await ProductModel.createProduct(nombre, imagen_url, precio, categoria, descripcion, estado);
+        res.status(200).json({
+            ok:true,
+            message: "Producto creado correctamente"
+        })
+    }catch(error){
+        res.status(500).json({message:"Error interno del servidor al crear", error})
+    }
+}
+//DELETE => Eliminar producto
+const deleteDeleteProduct = async (req,res)=>{
+    try{
+        let {id} = req.params;
+        let [result] = await ProductModel.deleteProduct(id);
+        res.status(200).json({
+            ok:true,
+            message: "Producto eliminado correctamente"
+        })
+    }catch(error){
+        res.status(500).json({message:"Error interno del servidor al eliminar", error})
+    }
+}
+
 export { 
     getAllProducts, 
     getProductById, 
-    putUpdateProduct 
+    putUpdateProduct,
+    putLogicDeleteProduct,
+    postCreateProduct,
+    deleteDeleteProduct
 };

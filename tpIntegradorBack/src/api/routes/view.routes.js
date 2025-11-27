@@ -22,4 +22,7 @@ router.get("/eliminar", (req, res) => {
     res.render("eliminar");
 });
 
+router.put("/baja/:id",(req,res)=>{
+    res.render("baja");
+})
 export default router;

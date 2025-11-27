@@ -50,10 +50,8 @@ function mostrarProductos(productos) {
     });
     contenedorProductos.innerHTML = htmlProductos;
     
-    //BAJA LOGICA.
-    
 }
-
+//BAJA LOGICA.
 contenedorProductos.addEventListener("click", async (event) => {
             if(event.target.classList.contains("boton-baja")){
                 let card = event.target.closest(".card-producto");
@@ -74,7 +72,7 @@ contenedorProductos.addEventListener("click", async (event) => {
 
                 alert("Producto dado de baja");
             } else {
-                alert(data.message);
+                alert("Error al dar de baja el producto");
             }
         }});
 //Funcion para dar la baja logica de productos

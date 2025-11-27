@@ -61,7 +61,7 @@ contenedorProductos.addEventListener("click", async (event) => {
                 // El usuario hizo clic en "Aceptar"
                 // Llamada al endpoint de "dar baja lógica"
                     let respuesta = await fetch(`http://localhost:3000/api/products/eliminar/${idProducto}`, {
-                        method: "PUT"
+                        method: "DELETE"
                     });
 
                     let texto = await respuesta.text();
@@ -69,7 +69,7 @@ contenedorProductos.addEventListener("click", async (event) => {
                     if (respuesta.ok) {
                         alert("Producto eliminado correctamente");
                     } else {
-                        alert(data.message);
+                        alert("Producto no eliminado, error");
                     }
                     obtenerProductos();
                 } 
