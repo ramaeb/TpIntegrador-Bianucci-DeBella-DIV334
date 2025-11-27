@@ -13,18 +13,11 @@ import { join, __dirname } from './src/api/utils/index.js';
     Middlewares
 ===================*/
 app.use(cors());
-<<<<<<< HEAD
-
-=======
->>>>>>> tpNicolas
 app.use(express.json());
 app.use(loggerUrl);
 
-<<<<<<< HEAD
-=======
 //Middleware para servir archivos estaticos
 app.use(express.static(join(__dirname, "src/public")));
->>>>>>> tpNicolas
 
 /*=================
     Configuracion

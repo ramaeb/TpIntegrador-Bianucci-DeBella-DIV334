@@ -7,6 +7,7 @@ const menuToggle = document.getElementById("menu-toggle");
 const menuLinks = document.getElementById("menu-links");
 const formularioNombre = document.getElementById("form-nombre");
 const main = document.querySelector("main");
+const botonLogin = document.getElementById("boton-login");
 
 /*=====================
   MENU RESPONSIVE
@@ -45,6 +46,16 @@ formularioNombre.addEventListener("submit", (event) => {
 });
 
 
+function logueoAdmin(){
+    //Tomo los valores de los inputs
+    const usuario = document.getElementById("input-usuario").value;
+    const password = document.getElementById("input-password").value;
+    fetch('http://localhost:3000/login', {
+        method: 'POST',
+        
+    })
+    console.log(usuario, password);
+}
 //Logueo temporal de admin
 function redireccionaLogin() {
      main.innerHTML = `
@@ -52,7 +63,7 @@ function redireccionaLogin() {
             <h1 id="titulo-login">Bienvenido</h1>
             <p id="parrafo-login">Ingresar usuario y contraseña</p>
 
-            <form id="form-login" onsubmit="logueoAdmin(); return false;">
+            <form id="form-login">
                 <div class="input-login">
                     <input type="text" id="input-usuario" placeholder="Usuario" required>
                 </div>
@@ -65,37 +76,8 @@ function redireccionaLogin() {
             </form>
         </section>
     `;
+    document.getElementById("form-login").addEventListener("submit", logueoAdmin);
 }
-
-//Funcion temporal para logueo admin (falta completar logica de usuario y contraseña) muestra el CRUD luego de loguearse.
-function logueoAdmin(){
-    main.innerHTML = `<section id="sect-bienvenida">
-                        <h1 id="titulo-bienvenida">Bienvenido ADMIN !</h1>
-                    </section>
-            <section id="sect-crud">
-            <ul id="listado-crud">
-                <a href="index.html">
-                    <li class="links-header"><span>GET</span></li>
-                </a>
-                <a href="get.html">
-                    <li class="links-header"><span>Get : id</span></li>
-                </a>
-                <a href="post.html">
-                    <li class="links-header"><span>POST</span></li>
-                </a>
-                <a href="put.html">
-                    <li class="links-header"><span>PUT</span></li>
-                </a>
-                <a href="delete.html">
-                    <li class="links-header"><span>DELETE</span></li>
-                </a>
-            </ul>
-
-    </header>`;
-
-}
-
 
 // Permitir que los botones HTML pueda llamar funciones.
 window.redireccionaLogin = redireccionaLogin;
-window.ingresarNombre = ingresarNombre;
