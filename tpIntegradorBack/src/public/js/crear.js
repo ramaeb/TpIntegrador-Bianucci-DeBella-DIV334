@@ -1,6 +1,5 @@
 let getProduct_form = document.getElementById("crearProducto-form");
 let listaProductos = document.getElementById("lista-productos");
-let url = "http://localhost:3000/api/products";
 
 //agarramos la informacion del formulario.
 
@@ -28,7 +27,7 @@ getProduct_form.addEventListener("submit", async (event) => {
     
 
     //Fetch para crear el producto:
-    respuesta = await fetch("http://localhost:3000/api/products", {
+    respuesta = await fetch("http://localhost:3000/api/products/crear", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

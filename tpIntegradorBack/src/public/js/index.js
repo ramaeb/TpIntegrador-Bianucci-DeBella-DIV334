@@ -50,8 +50,6 @@ function mostrarProductos(productos) {
     });
     contenedorProductos.innerHTML = htmlProductos;
     
-    
-    
 }
 //BAJA LOGICA.
 contenedorProductos.addEventListener("click", async (event) => {
