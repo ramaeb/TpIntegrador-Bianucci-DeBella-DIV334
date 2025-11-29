@@ -6,7 +6,7 @@ const PORT = enviroments.port;
 
 import cors from "cors";
 import { loggerUrl } from "./src/api/middlewares/middlewares.js"
-import { productRoutes, viewRoutes } from "./src/api/routes/index.js";
+import { productRoutes, viewRoutes, authRoutes} from "./src/api/routes/index.js";
 import { join, __dirname } from './src/api/utils/index.js';
 
 /*=================
@@ -32,6 +32,7 @@ app.use("/api/products", productRoutes);
 
 app.use("/dashboard", viewRoutes);
 
+app.use("/api/auth", authRoutes);
 
 app.listen(PORT, () => {
     console.log(`servidor corriendo en el puerto ${PORT}`);

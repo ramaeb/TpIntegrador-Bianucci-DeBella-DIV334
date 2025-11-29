@@ -37,6 +37,19 @@ CREATE TABLE `productos` (
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- CREACION TABLA USERS
+CREATE TABLE `usuarios` (
+  `usuario` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+   PRIMARY KEY (`usuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--Ponemos datos usuarios
+
+INSERT INTO `usuarios` (`usuario`, `password`) VALUES
+('admin', '123'), 
+('user', '112233'); 
+
 --
 -- Volcado de datos para la tabla `productos`
 --
