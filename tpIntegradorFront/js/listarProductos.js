@@ -5,7 +5,21 @@ nombreUsuario = localStorage.getItem("nombreUsuario");
 console.log("NOMBRE USUARIO EN LISTAR PRODUCTOS -->", nombreUsuario);
 const contenedorProductos = document.getElementById("seccion-productos");
 const contenedorCarrito   = document.getElementById("contenedor-carrito");
-const tituloBienvenida  = document.querySelector(".titulo-productos");
+const mensajeBienvenida  = document.getElementById("mensaje-bienvenida");
+
+//LOGICA USUARIO
+function verificarUsuario() {
+    const nombreUsuario = sessionStorage.getItem("nombreUsuario");
+    if (!nombreUsuario) {
+        window.location.href = "index.html";
+    } else {
+        // Mostrar mensaje de bienvenida
+        const mensajeBienvenida = document.getElementById("mensaje-bienvenida");
+        if (mensajeBienvenida) {
+            mensajeBienvenida.textContent = `¡Bienvenido, ${nombreUsuario}!`;
+        }
+    }
+}
 
 //LOGICA CARGA PRODUCTOS
 async function cargarProductos() {
@@ -48,21 +62,16 @@ function mostrarProductos(productos) {
 //LOGICA CARRITO
 function agregarAlCarrito(idProducto) {
     const producto = productosBackend.find(p => p.id === idProducto);
-
     if (!producto) return;
 
-    carrito.push(producto);
+    const productoEnCarrito = carrito.find(p => p.id === idProducto);
+    
+    if (productoEnCarrito) {
+        productoEnCarrito.cantidad += 1;
+    } else {
+        carrito.push({ ...producto, cantidad: 1 });
+    }
 
-    actualizarCarrito();
-}
-
-function eliminarProducto(indice) {
-    carrito.splice(indice, 1);
-    actualizarCarrito();
-}
-
-function vaciarCarrito() {
-    carrito = [];
     actualizarCarrito();
 }
 
@@ -76,17 +85,16 @@ function mostrarCarrito() {
     }
 
     html += `<ul>`;
-
     let total = 0;
 
     carrito.forEach((item, index) => {
         html += `
             <li class="item-carrito">
-                ${item.nombre} - $${item.precio}
-                <button id="boton-eliminar" onclick="eliminarProducto(${index})">Eliminar</button>
+                ${item.nombre} - $${item.precio} x ${item.cantidad} = $${item.precio * item.cantidad}
+                <button onclick="eliminarProducto(${index})">Eliminar</button>
             </li>
         `;
-        total += item.precio;
+        total += item.precio * item.cantidad;
     });
 
     html += `</ul>
@@ -97,6 +105,21 @@ function mostrarCarrito() {
     `;
 
     contenedorCarrito.innerHTML = html;
+}
+
+function eliminarProducto(indice) {
+    if (carrito[indice].cantidad > 1) {
+        carrito[indice].cantidad -= 1;
+    } else {
+        carrito.splice(indice, 1);
+    }
+    actualizarCarrito();
+}
+
+
+function vaciarCarrito() {
+    carrito = [];
+    actualizarCarrito();
 }
 
 function actualizarCarrito() {
@@ -158,12 +181,11 @@ function continuaCompra(){
 
 //INICIALIZACION
 function init() {
-    //vaciarCarrito(); OJO! CON ESTO ROMPEMOS CUANDO VUELVO DEL LOGIN, LO COMENTO.
+    verificarUsuario();
+    vaciarCarrito();
     cargarCarritoLocal();   
     cargarProductos();      
     mostrarCarrito();        
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    init();
-});
+init();
