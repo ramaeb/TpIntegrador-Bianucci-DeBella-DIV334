@@ -1,4 +1,5 @@
 <header class="admin-header">
+    <span class="admin-boton-volver"><a class="boton-volver">←</a></span>
     <nav class="admin-nav">
         <ul class="admin-nav-list">
             <li class="admin-nav-item"><a class="admin-nav-link" href="/dashboard/index">Ver</a></li>
@@ -9,3 +10,9 @@
         </ul>
     </nav>
 </header>
+<script>
+    botonVolver = document.querySelector('.boton-volver');
+    botonVolver.addEventListener('click', () =>{
+        window.location.href = "http://localhost:5501/TpIntegrador-Bianucci-DeBella-DIV334/tpIntegradorFront/";
+    });
+</script>   

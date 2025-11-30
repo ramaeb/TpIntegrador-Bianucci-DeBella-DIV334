@@ -66,7 +66,15 @@ formularioNombre.addEventListener("submit", (event) => {
         body: JSON.stringify({usuario, password}),
     })
     const data = await respuesta.json();
+    if (respuesta.ok){
+        alert("Login exitoso. Bienvenido " + data.user);
+        
+        //Redireccionar al dashboard
+        window.location.href = "http://localhost:3000/dashboard/index";
 
+    }else{
+
+    }
     console.log(data);
 }
 //Logueo temporal de admin
