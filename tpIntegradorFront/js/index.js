@@ -1,7 +1,3 @@
-import { cargarProductos } from "./views/listarProductos.js";
-
-
-
 
 
 /*=====================
@@ -46,7 +42,8 @@ formularioNombre.addEventListener("submit", (event) => {
     localStorage.setItem("nombreUsuario", nombreUsuario);
 
     // Redireccionar o cargar productos
-    cargarProductos();
+    window.location.href = "listarProductos.html";
+
 });
 
 
@@ -73,7 +70,7 @@ formularioNombre.addEventListener("submit", (event) => {
         window.location.href = "http://localhost:3000/dashboard/index";
 
     }else{
-
+        alert("Error: " + data.message);
     }
     console.log(data);
 }
