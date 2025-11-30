@@ -1,10 +1,11 @@
 //VARIABLES
 let productosBackend = [];// Productos que vienen del backend
 let carrito = [];// Carrito que se guarda en localStorage
-
+nombreUsuario = localStorage.getItem("nombreUsuario");
+console.log("NOMBRE USUARIO EN LISTAR PRODUCTOS -->", nombreUsuario);
 const contenedorProductos = document.getElementById("seccion-productos");
 const contenedorCarrito   = document.getElementById("contenedor-carrito");
-
+const tituloBienvenida  = document.querySelector(".titulo-productos");
 
 //LOGICA CARGA PRODUCTOS
 async function cargarProductos() {
@@ -82,7 +83,7 @@ function mostrarCarrito() {
         html += `
             <li class="item-carrito">
                 ${item.nombre} - $${item.precio}
-                <button onclick="eliminarProducto(${index})">Eliminar</button>
+                <button id="boton-eliminar" onclick="eliminarProducto(${index})">Eliminar</button>
             </li>
         `;
         total += item.precio;
@@ -90,7 +91,9 @@ function mostrarCarrito() {
 
     html += `</ul>
         <p><strong>Total: $${total}</strong></p>
-        <button onclick="vaciarCarrito()">Vaciar carrito</button>
+        <div id="div-botones-carrito"><button onclick="vaciarCarrito()">Vaciar carrito</button>
+        <button onclick="continuaCompra()">Continuar</button>
+        </div>
     `;
 
     contenedorCarrito.innerHTML = html;
@@ -110,6 +113,48 @@ function cargarCarritoLocal() {
     const data = localStorage.getItem("carrito_backend");
     if (data) carrito = JSON.parse(data);
 }
+
+/*
+============
+
+    logica ticket...
+
+========
+
+*/
+
+function continuaCompra(){
+    let fechaHoy = new Date().toLocaleDateString(); //fecha de hoy.
+    contenedorProductos.innerHTML = ``;
+    contenedorCarrito.innerHTML = ``;
+    let total = 0;
+
+    let html = `<h2>TICKET</h2>
+    <span id="fecha-hoy">${fechaHoy}</span>`;
+    carrito.forEach((item, index) => {
+        html += `
+        <li class="item-carrito"> 
+        ${item.nombre} - <span id="item-precio">$${item.precio}</span>
+            </li>
+        `;
+        total += item.precio;
+    });
+    
+    html += `</ul>
+        <p id="total-precio">Total: $${total}</strong></p>
+        <button onclick="descargaTicket()">Descargar Ticket</button>
+        </div>
+    `;
+    tituloBienvenida.innerHTML = `Gracias por su compra, ${nombreUsuario}`;
+    contenedorCarrito.innerHTML = html;
+    alert("Gracias por su compra, " + nombreUsuario + "!"); 
+    console.log(new Date().toLocaleDateString());
+    
+}
+
+
+
+
 
 //INICIALIZACION
 function init() {

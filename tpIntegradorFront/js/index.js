@@ -40,7 +40,7 @@ formularioNombre.addEventListener("submit", (event) => {
 
     // Guardar en LocalStorage
     localStorage.setItem("nombreUsuario", nombreUsuario);
-
+    
     // Redireccionar o cargar productos
     window.location.href = "listarProductos.html";
 
