@@ -1,4 +1,4 @@
-import { cargarProductos } from "./views/listarProductos.js";
+
 
 /*=====================
   VARIABLES DEL DOM
@@ -42,7 +42,8 @@ formularioNombre.addEventListener("submit", (event) => {
     localStorage.setItem("nombreUsuario", nombreUsuario);
 
     // Redireccionar o cargar productos
-    cargarProductos();
+    window.location.href = "listarProductos.html";
+
 });
 
 
