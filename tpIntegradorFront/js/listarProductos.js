@@ -5,6 +5,7 @@ let carrito = [];// Carrito que se guarda en localStorage
 const contenedorProductos = document.getElementById("seccion-productos");
 const contenedorCarrito   = document.getElementById("contenedor-carrito");
 
+
 //LOGICA CARGA PRODUCTOS
 async function cargarProductos() {
     try {
@@ -112,10 +113,12 @@ function cargarCarritoLocal() {
 
 //INICIALIZACION
 function init() {
-    vaciarCarrito();
+    //vaciarCarrito(); OJO! CON ESTO ROMPEMOS CUANDO VUELVO DEL LOGIN, LO COMENTO.
     cargarCarritoLocal();   
     cargarProductos();      
     mostrarCarrito();        
 }
 
-init();
+document.addEventListener("DOMContentLoaded", () => {
+    init();
+});

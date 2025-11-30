@@ -47,15 +47,32 @@ formularioNombre.addEventListener("submit", (event) => {
 });
 
 
-function logueoAdmin(){
+ async function logueoAdmin(){
     //Tomo los valores de los inputs
+    
     const usuario = document.getElementById("input-usuario").value;
     const password = document.getElementById("input-password").value;
-    fetch('http://localhost:3000/login', {
-        method: 'POST',
-        
+    console.log("USUARIO ENVIADO -->", usuario);
+    console.log("PASSWORD ENVIADO -->", password);
+
+    const respuesta = await fetch("http://localhost:3000/api/auth/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({usuario, password}),
     })
-    console.log(usuario, password);
+    const data = await respuesta.json();
+    if (respuesta.ok){
+        alert("Login exitoso. Bienvenido " + data.user);
+        
+        //Redireccionar al dashboard
+        window.location.href = "http://localhost:3000/dashboard/index";
+
+    }else{
+        alert("Error: " + data.message);
+    }
+    console.log(data);
 }
 //Logueo temporal de admin
 function redireccionaLogin() {
@@ -63,7 +80,6 @@ function redireccionaLogin() {
         <section id="sect-login">
             <h1 id="titulo-login">Bienvenido</h1>
             <p id="parrafo-login">Ingresar usuario y contraseña</p>
-
             <form id="form-login">
                 <div class="input-login">
                     <input type="text" id="input-usuario" placeholder="Usuario" required>
@@ -72,12 +88,12 @@ function redireccionaLogin() {
                     <input type="password" id="input-password" placeholder="Contraseña" required>
                 </div>
                 <div class="boton-login">
-                    <button type="submit" id="boton-login">Ingresar</button>
+                    <button type="button" id="boton-login">Ingresar</button>
                 </div>
             </form>
         </section>
     `;
-    document.getElementById("form-login").addEventListener("submit", logueoAdmin);
+    document.getElementById("boton-login").addEventListener("click", logueoAdmin);
 }
 
 // Permitir que los botones HTML pueda llamar funciones.
