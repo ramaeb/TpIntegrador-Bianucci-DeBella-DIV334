@@ -5,7 +5,7 @@ nombreUsuario = localStorage.getItem("nombreUsuario");
 console.log("NOMBRE USUARIO EN LISTAR PRODUCTOS -->", nombreUsuario);
 const contenedorProductos = document.getElementById("seccion-productos");
 const contenedorCarrito   = document.getElementById("contenedor-carrito");
-const mensajeBienvenida  = document.getElementById("mensaje-bienvenida");
+const mensajeBienvenida  = document.querySelector(".mensaje-bienvenida");
 
 //LOGICA USUARIO
 function verificarUsuario() {
@@ -154,21 +154,23 @@ function continuaCompra(){
 
     let html = `<h2>TICKET</h2>
     <span id="fecha-hoy">${fechaHoy}</span>`;
+    
+    
     carrito.forEach((item, index) => {
         html += `
-        <li class="item-carrito"> 
-        ${item.nombre} - <span id="item-precio">$${item.precio}</span>
+            <li class="item-carrito">
+                ${item.nombre} - $${item.precio} x ${item.cantidad} <span id="item-precio">$${item.precio * item.cantidad}</span>
+                <button onclick="eliminarProducto(${index})">Eliminar</button>
             </li>
         `;
-        total += item.precio;
+        total += item.precio * item.cantidad;
     });
-    
     html += `</ul>
         <p id="total-precio">Total: $${total}</strong></p>
         <button onclick="descargaTicket()">Descargar Ticket</button>
         </div>
     `;
-    tituloBienvenida.innerHTML = `Gracias por su compra, ${nombreUsuario}`;
+    mensajeBienvenida.innerHTML = `Gracias por su compra, ${nombreUsuario}`;
     contenedorCarrito.innerHTML = html;
     alert("Gracias por su compra, " + nombreUsuario + "!"); 
     console.log(new Date().toLocaleDateString());
