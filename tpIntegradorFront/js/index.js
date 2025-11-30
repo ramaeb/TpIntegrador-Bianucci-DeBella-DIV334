@@ -1,5 +1,5 @@
 
-
+sessionStorage.removeItem("nombreUsuario");
 /*=====================
   VARIABLES DEL DOM
 =======================*/
@@ -24,32 +24,29 @@ document.querySelectorAll("#menu-links a").forEach(link => {
 =====================*/
 //Formulario para ingresar el nombre y mostrar los productos
 formularioNombre.addEventListener("submit", (event) => {
-
     event.preventDefault();
 
-    const nombreUsuario = document.getElementById("input-nombre").value.trim();
-
+    const nombreUsuario = document.getElementById("input-nombre").value;
+    
     // Regex para permitir solo letras (incluye acentos y ñ)
     const regexNombre = /^[A-Za-zÁÉÍÓÚáéíóúÑñ]+$/;
 
-    // Validación
-    if (nombreUsuario === "" || !regexNombre.test(nombreUsuario)) {
+    // Validación: debe tener al menos un caracter y pasar el regex
+    if (!nombreUsuario || !regexNombre.test(nombreUsuario)) {
         alert("Por favor, ingresa un nombre válido (solo letras).");
         return;
     }
 
-    // Guardar en LocalStorage
-    localStorage.setItem("nombreUsuario", nombreUsuario);
-
-    // Redireccionar o cargar productos
+    // Guardar en sessionStorage
+    sessionStorage.setItem("nombreUsuario", nombreUsuario);
+    
+    // Redirigir a la página de productos
     window.location.href = "listarProductos.html";
-
 });
 
 
- async function logueoAdmin(){
+async function logueoAdmin(){
     //Tomo los valores de los inputs
-    
     const usuario = document.getElementById("input-usuario").value;
     const password = document.getElementById("input-password").value;
     console.log("USUARIO ENVIADO -->", usuario);
@@ -74,6 +71,7 @@ formularioNombre.addEventListener("submit", (event) => {
     }
     console.log(data);
 }
+
 //Logueo temporal de admin
 function redireccionaLogin() {
      main.innerHTML = `
