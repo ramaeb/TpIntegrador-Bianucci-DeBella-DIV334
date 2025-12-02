@@ -4,7 +4,6 @@ import ProductModel from "../models/product.models.js";
 const getAllProducts = async (req, res) => {
 
     try {
-        
         const [rows] = await ProductModel.selectAllProducts();
 
         res.status(200).json({

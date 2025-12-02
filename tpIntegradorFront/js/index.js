@@ -59,6 +59,7 @@ async function logueoAdmin(){
         },
         body: JSON.stringify({usuario, password}),
     })
+    
     const data = await respuesta.json();
     if (respuesta.ok){
         alert("Login exitoso. Bienvenido " + data.user);

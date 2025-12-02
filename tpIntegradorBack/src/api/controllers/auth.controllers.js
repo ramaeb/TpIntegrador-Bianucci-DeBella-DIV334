@@ -6,7 +6,7 @@ const postLogin = async (req,res) =>{
     try{
         let {usuario, password} = req.body;
         const [rows] = await authModels.loginUser(usuario);
-        console.log("ROWS DEVUELTAS POR LA QUERY:", rows);
+        
         if (rows.length === 0) {
             return res.status(401).json({ ok: false, message: "Usuario no encontrado" });
         }   

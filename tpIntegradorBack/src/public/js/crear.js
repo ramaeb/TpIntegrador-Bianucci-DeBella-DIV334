@@ -24,7 +24,6 @@ getProduct_form.addEventListener("submit", async (event) => {
     };
     event.preventDefault();
     
-    
 
     //Fetch para crear el producto:
     respuesta = await fetch("http://localhost:3000/api/products/crear", {
@@ -34,6 +33,7 @@ getProduct_form.addEventListener("submit", async (event) => {
         },
         body: JSON.stringify(nuevoProducto)
     });
+    
     data = await respuesta.json();
     console.log(data);
     if(precio == 0 || precio < 0){

@@ -172,6 +172,14 @@ body {
 /* ============================= */
 /*   FORMULARIO MODIFICAR.HTML        */
 /* ============================= */
+#contenedor-ver-producto-y-modificar-prodcuto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px; 
+    margin-top: 40px; 
+    height: auto;
+}
 
 #div-formulario-modificar {
     display: flex;
