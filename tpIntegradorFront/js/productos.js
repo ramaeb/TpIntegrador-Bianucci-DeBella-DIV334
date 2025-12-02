@@ -18,10 +18,18 @@ let productosBackend = [];// Productos que vienen del backend
 let carrito = [];// Carrito que se guarda en localStorage
 nombreUsuario = localStorage.getItem("nombreUsuario");
 
+/*---------------------
+    VARIABLES DEL DOM
+-----------------------*/
 const contenedorProductos = document.getElementById("seccion-productos");
 const contenedorCarrito   = document.getElementById("contenedor-carrito");
 const mensajeBienvenida  = document.getElementById("mensaje-bienvenida");
+const barraBusqueda = document.getElementById("busqueda");
 
+/*---------------------
+ESCUCHADORES DE EVENTOS
+-----------------------*/
+barraBusqueda.addEventListener("input", filtrarProductos);
 
 //LOGICA CARGA PRODUCTOS
 async function cargarProductos() {
@@ -36,6 +44,8 @@ async function cargarProductos() {
 
         productosBackend = data.payload;
         mostrarProductos(productosBackend);
+
+     
 
     } catch (error) {
         console.error("Error al cargar productos:", error);
@@ -60,6 +70,20 @@ function mostrarProductos(productos) {
     
     contenedorProductos.innerHTML = htmlProductos;
 
+}
+
+//LOGICA BUSCADOR
+function filtrarProductos(){
+    let valorBusqueda = barraBusqueda.value.toLowerCase();
+
+    let productoFiltrado = productosBackend.filter(prod => prod.nombre.toLowerCase().includes(valorBusqueda));
+    console.log(productoFiltrado);
+    if(productoFiltrado.length > 0){
+        mostrarProductos(productoFiltrado);
+    } else {
+        contenedorProductos.innerHTML = `<p>No se encontraron productos que coincidan con la búsqueda.</p>`;
+    }
+    
 }
 
 //LOGICA CARRITO
@@ -195,11 +219,11 @@ function descargaTicket(){
 
 //INICIALIZACION
 function init() {
+    cargarProductos();  
     verificarUsuario();
     vaciarCarrito();
     cargarCarritoLocal();   
-    cargarProductos();      
-    mostrarCarrito();        
+    mostrarCarrito();      
 }
 
 init();
