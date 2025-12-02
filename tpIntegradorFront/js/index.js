@@ -1,4 +1,3 @@
-
 sessionStorage.removeItem("nombreUsuario");
 /*=====================
   VARIABLES DEL DOM
