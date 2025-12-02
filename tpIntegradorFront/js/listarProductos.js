@@ -1,3 +1,6 @@
+
+//Importamos JSPDF LIBRERIA PARA GENERAR PDF
+
 //VARIABLES
 let productosBackend = [];// Productos que vienen del backend
 let carrito = [];// Carrito que se guarda en localStorage
@@ -160,7 +163,6 @@ function continuaCompra(){
         html += `
             <li class="item-carrito">
                 ${item.nombre} - $${item.precio} x ${item.cantidad} <span id="item-precio">$${item.precio * item.cantidad}</span>
-                <button onclick="eliminarProducto(${index})">Eliminar</button>
             </li>
         `;
         total += item.precio * item.cantidad;
@@ -171,13 +173,21 @@ function continuaCompra(){
         </div>
     `;
     mensajeBienvenida.innerHTML = `Gracias por su compra, ${nombreUsuario}`;
+    carritoPdf = contenedorCarrito;
     contenedorCarrito.innerHTML = html;
+
     alert("Gracias por su compra, " + nombreUsuario + "!"); 
     console.log(new Date().toLocaleDateString());
     
 }
 
-
+function descargaTicket(){
+    const { jsPDF } = window.jspdf;
+    const documento = new jsPDF();
+    const texto = carritoPdf.innerText; 
+    documento.text(`Nombre: ${nombreUsuario}` +"\n" + texto  ,10, 10, align="left");
+    documento.save(`ticket${nombreUsuario}.pdf`);
+}
 
 
 
