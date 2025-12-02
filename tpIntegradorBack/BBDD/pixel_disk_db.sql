@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-11-2025 a las 13:55:38
+-- Tiempo de generación: 02-12-2025 a las 18:22:01
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.1.25
 
@@ -43,7 +43,7 @@ CREATE TABLE `productos` (
 
 INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `categoria`, `imagen_url`, `estado`) VALUES
 (1, 'Windows 10 Home', 'Consigue Licencia Windows 10 Home original en PixelDisk, la opción ideal para quienes buscan un sistema operativo confiable y accesible. Diseñado para uso doméstico, Windows 10 Home ofrece una experiencia completa con activación inmediata y un entorno intuitivo para todas tus necesidades informáticas.', 14990, 'Windows', 'https://activatusoftware.com/wp-content/uploads/2022/12/windows-10-home.png.webp', 0),
-(2, 'Windows 10000', 'La Licencia Windows 10 Pro es perfecta para usuarios avanzados y empresas que buscan un sistema operativo confiable, seguro y ampliamente compatible. En PixelDisk, ofrecemos esta licencia original con activación inmediata, para que puedas disfrutar de todas las funcionalidades de Windows 10 Pro al mejor precio.', 17990, 'Windows', 'https://activatusoftware.com/wp-content/uploads/2022/12/windows-10-pro.png.webp', 1),
+(2, 'Windows 10000', 'La Licencia Windows 10 Pro es perfecta para usuarios avanzados y empresas que buscan un sistema operativo confiable, seguro y ampliamente compatible. En PixelDisk, ofrecemos esta licencia original con activación inmediata, para que puedas disfrutar de todas las funcionalidades de Windows 10 Pro al mejor precio.', 17990, 'Windows', 'https://activatusoftware.com/wp-content/uploads/2022/12/windows-10-pro.png.webp', 0),
 (3, 'Windows 11 Home', 'La Licencia Windows 11 Home es ideal para usuarios que desean un sistema operativo moderno, seguro y con una interfaz intuitiva. Esta licencia original garantiza que obtendrás todas las actualizaciones y características de Windows 11 en tu equipo personal.', 14990, 'Windows', 'https://activatusoftware.com/wp-content/uploads/2022/12/windows-11-Home.png.webp', 0),
 (4, 'Windows 11 Pro', 'La Licencia Windows 11 Pro es ideal para usuarios avanzados y empresas que buscan un sistema operativo confiable, seguro y eficiente. En PixelDisk, ofrecemos esta licencia original con activación inmediata, para que puedas disfrutar de todas las funcionalidades de Windows 11 Pro al mejor precio.', 17990, 'Windows¡', 'https://activatusoftware.com/wp-content/uploads/2022/12/windows-11-pro.png.webp', 0),
 (5, 'Windows 7 Pro', 'La Licencia Windows 7 Pro es la solución ideal para usuarios y empresas que buscan estabilidad y seguridad en equipos de generaciones anteriores. Con esta licencia original, obtendrás un sistema operativo confiable para el trabajo en entornos profesionales.', 22990, 'Windows', 'https://activatusoftware.com/wp-content/uploads/2022/12/Windows-7-Professional.png.webp', 1),
@@ -60,16 +60,15 @@ INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `categoria`, `
 CREATE TABLE `usuarios` (
   `usuario` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish2_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`usuario`, `password`) VALUES
-('admin', 'admin'),
-('usuario1', '123456'),
-('[value-1]', '[value-2]');
+('usuario1', '$2a$12$6MF.RYI/OI6vMRYNfcyzfeM/dLTEngREHS7X1.JzOaVJq6/8gJ7mm'),
+('admin', '$2a$12$ySsHGooFklMPE9NnHgTbf.yqitF7lr5ee45EmIzsVCLQpn.paSZ2K');
 
 --
 -- Índices para tablas volcadas
