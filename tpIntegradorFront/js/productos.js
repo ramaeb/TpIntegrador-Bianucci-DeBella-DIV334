@@ -1,18 +1,6 @@
-
-//Importamos JSPDF LIBRERIA PARA GENERAR PDF
-
-//VARIABLES
-let productosBackend = [];// Productos que vienen del backend
-let carrito = [];// Carrito que se guarda en localStorage
-nombreUsuario = localStorage.getItem("nombreUsuario");
-console.log("NOMBRE USUARIO EN LISTAR PRODUCTOS -->", nombreUsuario);
-const contenedorProductos = document.getElementById("seccion-productos");
-const contenedorCarrito   = document.getElementById("contenedor-carrito");
-const mensajeBienvenida  = document.querySelector(".mensaje-bienvenida");
-
 //LOGICA USUARIO
 function verificarUsuario() {
-    const nombreUsuario = sessionStorage.getItem("nombreUsuario");
+    const nombreUsuario = localStorage.getItem("nombreUsuario");
     if (!nombreUsuario) {
         window.location.href = "index.html";
     } else {
@@ -23,13 +11,25 @@ function verificarUsuario() {
         }
     }
 }
+//Importamos JSPDF LIBRERIA PARA GENERAR PDF
+
+//VARIABLES
+let productosBackend = [];// Productos que vienen del backend
+let carrito = [];// Carrito que se guarda en localStorage
+nombreUsuario = localStorage.getItem("nombreUsuario");
+
+const contenedorProductos = document.getElementById("seccion-productos");
+const contenedorCarrito   = document.getElementById("contenedor-carrito");
+const mensajeBienvenida  = document.getElementById("mensaje-bienvenida");
+
 
 //LOGICA CARGA PRODUCTOS
 async function cargarProductos() {
     try {
         const response = await fetch("http://localhost:3000/api/products");
+        
         const data = await response.json();
-
+       
         if (!response.ok) {
             throw new Error(data.message || "Error al obtener productos");
         }
@@ -46,7 +46,7 @@ function mostrarProductos(productos) {
 
     let htmlProductos = ``;
 
-    productos.forEach(prod => {
+    productos.filter(prod => prod.estado == 1).forEach(prod => {
         htmlProductos += `
             <div class="card-producto">
                 <img src="${prod.imagen_url}" alt="${prod.nombre}">
@@ -150,9 +150,11 @@ function cargarCarritoLocal() {
 */
 
 function continuaCompra(){
+
     let fechaHoy = new Date().toLocaleDateString(); //fecha de hoy.
     contenedorProductos.innerHTML = ``;
     contenedorCarrito.innerHTML = ``;
+
     let total = 0;
 
     let html = `<h2>TICKET</h2>

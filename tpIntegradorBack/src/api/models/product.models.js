@@ -3,6 +3,8 @@ import connection from '../database/db.js';
 const selectAllProducts = () => {
     const sql = "SELECT * FROM productos";
     return connection.query(sql);
+    
+
 }
 
 const selectProductById = (id) => { 

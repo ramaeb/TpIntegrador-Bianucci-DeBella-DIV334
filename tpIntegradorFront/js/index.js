@@ -37,10 +37,10 @@ formularioNombre.addEventListener("submit", (event) => {
     }
 
     // Guardar en sessionStorage
-    sessionStorage.setItem("nombreUsuario", nombreUsuario);
+    localStorage.setItem("nombreUsuario", nombreUsuario);
     
     // Redirigir a la página de productos
-    window.location.href = "listarProductos.html";
+    window.location.href = "productos.html";
 });
 
 

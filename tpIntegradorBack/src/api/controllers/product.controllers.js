@@ -1,11 +1,11 @@
-import ProductModel from "../models/product.models.js";
+import productModel from "../models/product.models.js";
 
 //GET => Trae  todos los productos
 const getAllProducts = async (req, res) => {
 
     try {
-        const [rows] = await ProductModel.selectAllProducts();
-
+        const [rows] = await productModel.selectAllProducts();
+       
         res.status(200).json({
             payload: rows,
             message: rows.length === 0 ? "No se encontraron productos" : "Productos encontrados",
@@ -23,7 +23,7 @@ const getProductById = async (req, res) => {
         let { id } = req.params;
         //Optimizar id
 
-        let [rows] = await ProductModel.selectProductById(id);
+        let [rows] = await productModel.selectProductById(id);
 
         res.status(200).json({
             payload: rows,
@@ -42,7 +42,7 @@ const putUpdateProduct = async (req, res) => {
     try {
         let { id, nombre, imagen_url, precio, categoria, descripcion, estado } = req.body;
 
-        let [result] = await ProductModel.updateProductById(id, nombre, imagen_url, precio, categoria, descripcion, estado);
+        let [result] = await productModel.updateProductById(id, nombre, imagen_url, precio, categoria, descripcion, estado);
 
         res.status(200).json({
             ok: true,
@@ -60,7 +60,7 @@ const putUpdateProduct = async (req, res) => {
 const putLogicDeleteProduct = async (req,res) =>{
     try{
         let {id} = req.params; //El id se obtiene desde los parametros NO Desde el BODY OK!!
-        let [result] = await ProductModel.logicDeleteProduct(id);
+        let [result] = await productModel.logicDeleteProduct(id);
 
         res.status(200).json({
             ok:true,
@@ -76,7 +76,7 @@ const putLogicDeleteProduct = async (req,res) =>{
 const postCreateProduct = async (req,res)=>{
     try{
         let {nombre, imagen_url, precio, categoria, descripcion, estado} = req.body;
-        let [result] = await ProductModel.createProduct(nombre, imagen_url, precio, categoria, descripcion, estado);
+        let [result] = await productModel.createProduct(nombre, imagen_url, precio, categoria, descripcion, estado);
         res.status(200).json({
             ok:true,
             message: "Producto creado correctamente"
@@ -89,7 +89,7 @@ const postCreateProduct = async (req,res)=>{
 const deleteDeleteProduct = async (req,res)=>{
     try{
         let {id} = req.params;
-        let [result] = await ProductModel.deleteProduct(id);
+        let [result] = await productModel.deleteProduct(id);
         res.status(200).json({
             ok:true,
             message: "Producto eliminado correctamente"

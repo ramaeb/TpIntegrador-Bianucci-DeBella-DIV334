@@ -6,5 +6,4 @@ export {
     productRoutes,
     viewRoutes,
     authRoutes
-
 }
