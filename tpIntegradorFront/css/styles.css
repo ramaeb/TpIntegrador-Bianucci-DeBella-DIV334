@@ -460,6 +460,8 @@ footer{
     font-family: "BBH Sans Bartle", sans-serif;
     color: #242424;
     width: 45%;
+    max-width: 400px; /* nunca más ancho que esto */
+    min-width: 250px;
 
 }
 

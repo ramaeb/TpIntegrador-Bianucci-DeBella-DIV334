@@ -81,6 +81,7 @@ function filtrarProductos(){
     console.log(productoFiltrado);
     if(productoFiltrado.length > 0){
         mostrarProductos(productoFiltrado);
+        contenedorCarrito.style.display = "block";
     } else {
         contenedorProductos.innerHTML = `<p class="p-producto-no-encontrado">No se encontraron productos que coincidan con la busqueda.</p>`;
         contenedorCarrito.style.display = "none";
@@ -208,6 +209,7 @@ function descargaTicket(){
     const texto = carritoPdf.innerText; 
     documento.text(`Nombre: ${nombreUsuario}` +"\n" + texto  ,10, 10, align="left");
     documento.save(`ticket${nombreUsuario}.pdf`);
+    window.location.href = "index.html";
 
    
 }
