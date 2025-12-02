@@ -1,31 +1,18 @@
-
-/*Desplazamiento suave*/
-html {
-  scroll-behavior: smooth;
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-body{
-    display: block;
+body {
+    display: flex;
+    flex-direction: column;
     background-color: #F7F7F7;
     font-family: "BBH Sans Bartle", sans-serif;
-    font-weight: 10;
-    font-style: normal;
 }
 
-/*
-======================
-Seccion Navegacion
-======================*/
-header{
-   top: 0;
-   background-color: #f7f7f7b4;
-   margin: 0 auto;
-   border-bottom: 0.5px solid rgb(230, 230, 230);
-   position: sticky;
-}
-nav{
-    display: flex;
-    justify-content: center;
+main {
+    flex: 1;
 }
 /*
 ====================================
@@ -81,9 +68,17 @@ Menu desplegable para el responsive
     justify-content: left;
 }
 
+.barra-de-busqueda {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1; /* ocupa el espacio disponible entre logo y links */
+}
+
 #busqueda {
-    width: 110%;
-    height: 1.3rem;
+    width: 100%; 
+    max-width: 400px;
+    height: 2rem;
     margin-right: 20px;
     border: 1px solid #ccc;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
@@ -91,7 +86,7 @@ Menu desplegable para el responsive
     transition: all 0.3s ease; 
     border-radius: 5px;      
     padding: 8px;            
-    font-size: 1rem;        
+    font-size: 1.3rem;        
 }
 
 #busqueda:focus {
@@ -99,26 +94,51 @@ Menu desplegable para el responsive
     box-shadow: 0 0 8px rgba(0,120,215,0.3);
 }
 
-/*Division de incio, sobre nosotros etc.*/
-#div-ul-li{
-    display: inline-flex;
-    justify-content: right;
-    align-items: center;
+.p-producto-no-encontrado {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    width: 50%;
+    font-size: 1.rem;
+    margin-top: 20px;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 10px;
 }
+
+/*Division de incio.*/
+#link-inicio {
+    font-family: 'Open Sans', sans-serif; 
+    font-weight: 700; 
+    color: #0078D7;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: color 0.2s ease;
+}
+
+#link-inicio:hover {
+    color: #004479;
+    text-decoration: none;
+}
+
 #div-ul-li ul{
     display: flex;
+    align-items: center;
     list-style: none;
     gap: 20px;
+    padding: 10px;
 }
+
 #div-ul-li ul a{
     text-decoration: none;
     color: black;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
+    font-family: 'Lato', sans-serif;
+    
+    
 }
-#div-ul-li ul a:hover{
-    text-decoration: none;
-    color: #0078D7;
-}
+
 
 /* Avatar (icono de usuario en el navbar) */
 #avatar-login {
@@ -216,33 +236,35 @@ Seccion Central, titulo y campo de texto donde se pone el nombre
     margin-top: 100px;
     margin-bottom: 50px;
     width: 100%;
-    height: 100vh;
+    height: 65vh;
 }
 
 #sect-titulo-central h1{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 8vw;
+    font-size: 5vw;
     width: 100%;
     margin-top: 150px;
     margin-bottom: 0;
     height: auto;
 }
+
 #span-titulo-disk{
     display: flex;
     color:#0078D7;
 }
+
 #parrafo-titulo-central{
     display: flex;
     justify-content: center;
-    font-size: 1.5vw;
+    font-size: 1.2vw;
     color : #393E46;
 }
 #parrafo-titulo-ingresa-nombre{
     display: flex;
     justify-content: center;
-    font-size: 2vw;
+    font-size: 1vw;
     margin-top: 10px;
     color: rgba(128, 128, 128, 0.541);
 }
@@ -283,41 +305,6 @@ Seccion Central, titulo y campo de texto donde se pone el nombre
 #boton-ingresar:hover{
     background-color: #004479;
 }
-s
-/*
-==================================================================
-Seccion PARRAFO SOBRE NOSOTROS... (QUIENES SOMOS Y COMO COMPRAR)
-==================================================================
-*/
-
-#sect-sobre-nosotros,#sect-como-comprar{
-    display: block;
-    margin-top: 150px;
-    margin-bottom: 100px;
-    max-width: 100%;
-    height: auto;
-    padding: 150px;
-}
-
-#sect-sobre-nosotros h2,#sect-como-comprar h2{
-    font-size: 1.7rem;
-    display: flex;
-    margin-top: 0;
-    align-items: center;
-    justify-content: center;
-    width: 99%;
-    margin-bottom: 20px;
-    color: #0078D7;
-}
-
-#sect-sobre-nosotros p,#sect-como-comprar p{
-    font-size: 1rem;
-    align-content: center;
-    text-align: center;
-    margin-bottom: 20px;
-    color: rgb(36, 35, 35);
-}
-
 
 /*
 =================
@@ -339,13 +326,15 @@ footer{
     LISTAR-PRODUCTOS.JS
 ==========================
 */
-#mensaje-bienvenida{
+#mensaje-bienvenida {
     display: flex;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1.9rem;
     margin-bottom: 20px;
     color: #393E46;
+    font-family: 'Montserrat', sans-serif;
 }
+
 
 .contenedor-productos {
     display: flex;
@@ -388,21 +377,40 @@ footer{
     border-radius: 8px;
 }
 
-
-
 /* TIPOGRAFIA CARDS PRODUCTOS */
+.card-producto p.descripcion {
+    width: 100%;            
+    max-height: calc(1.2em * 5); 
+    overflow-y: auto;      
+    line-height: 1.2em;
+    box-sizing: border-box; 
+    padding-right: 5px;
+    justify-content: center;
+    font-size: 1.3rem;
+    text-align: justify;
+    background-color: #f0f0f0; 
+    border-radius: 5px;        
+    padding: 5px;
+}
+
+.card-producto p.precio {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: black;
+}
 .card-producto {
-    font-family: "BBH Sans Bartle", sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 400;
-    font-style: normal;
     color: #242424;
 }
 
 .card-producto h3 {
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.2rem;
     margin-top: 10px;
     margin-bottom: 5px;
-    color: #0078D7;
+    color: black;
 }
 
 .card-producto p {
@@ -411,7 +419,7 @@ footer{
     color: #393E46;
 }
 
-.btn-carrito, .btn-detalles{
+.btn-carrito {
     margin: 5px;
     background-color: #0078D7;
     color: white;
@@ -421,7 +429,8 @@ footer{
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.2s ease;
-    font-family: "BBH Sans Bartle", sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
 }
 
 .card-producto button:hover {

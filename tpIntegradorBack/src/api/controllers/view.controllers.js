@@ -6,8 +6,9 @@ export const vistaProductos =  async (req, res) => {
         const [rows] = await productModel.selectAllProducts();
         
         res.render("index", 
-            { productos: rows }
+            { productos: rows },
         );
+       
 
     }catch (error) {
         console.error(error);

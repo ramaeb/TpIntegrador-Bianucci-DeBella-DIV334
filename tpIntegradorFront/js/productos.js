@@ -7,7 +7,7 @@ function verificarUsuario() {
         // Mostrar mensaje de bienvenida
         const mensajeBienvenida = document.getElementById("mensaje-bienvenida");
         if (mensajeBienvenida) {
-            mensajeBienvenida.textContent = `¡Bienvenido, ${nombreUsuario}!`;
+            mensajeBienvenida.textContent = `¡Bienvenido, ${nombreUsuario.toUpperCase()}!`;
         }
     }
 }
@@ -16,7 +16,7 @@ function verificarUsuario() {
 //VARIABLES
 let productosBackend = [];// Productos que vienen del backend
 let carrito = [];// Carrito que se guarda en localStorage
-nombreUsuario = localStorage.getItem("nombreUsuario");
+
 
 /*---------------------
     VARIABLES DEL DOM
@@ -25,6 +25,7 @@ const contenedorProductos = document.getElementById("seccion-productos");
 const contenedorCarrito   = document.getElementById("contenedor-carrito");
 const mensajeBienvenida  = document.getElementById("mensaje-bienvenida");
 const barraBusqueda = document.getElementById("busqueda");
+const nombreUsuario = localStorage.getItem("nombreUsuario");
 
 /*---------------------
 ESCUCHADORES DE EVENTOS
@@ -61,9 +62,9 @@ function mostrarProductos(productos) {
             <div class="card-producto">
                 <img src="${prod.imagen_url}" alt="${prod.nombre}">
                 <h3>${prod.nombre}</h3>
-                <p>Precio: $${prod.precio}</p>
+                <p class="descripcion">${prod.descripcion}</p>
+                <p class="precio"> Precio: $${prod.precio}</p>
                 <button class="btn-carrito" onclick="agregarAlCarrito(${prod.id})">Agregar al carrito</button>
-                <button class="btn-detalles" onclick="cargarDetallesProductos(${prod.id})">Ver detalles</button>
             </div>
         `;
     });
@@ -81,7 +82,8 @@ function filtrarProductos(){
     if(productoFiltrado.length > 0){
         mostrarProductos(productoFiltrado);
     } else {
-        contenedorProductos.innerHTML = `<p>No se encontraron productos que coincidan con la búsqueda.</p>`;
+        contenedorProductos.innerHTML = `<p class="p-producto-no-encontrado">No se encontraron productos que coincidan con la busqueda.</p>`;
+        contenedorCarrito.style.display = "none";
     }
     
 }
@@ -164,21 +166,13 @@ function cargarCarritoLocal() {
     if (data) carrito = JSON.parse(data);
 }
 
-/*
-============
-
-    logica ticket...
-
-========
-
-*/
-
+//LOGICA TICKET
 function continuaCompra(){
 
     let fechaHoy = new Date().toLocaleDateString(); //fecha de hoy.
     contenedorProductos.innerHTML = ``;
     contenedorCarrito.innerHTML = ``;
-
+    
     let total = 0;
 
     let html = `<h2>TICKET</h2>
@@ -193,6 +187,7 @@ function continuaCompra(){
         `;
         total += item.precio * item.cantidad;
     });
+
     html += `</ul>
         <p id="total-precio">Total: $${total}</strong></p>
         <button onclick="descargaTicket()">Descargar Ticket</button>
@@ -213,8 +208,9 @@ function descargaTicket(){
     const texto = carritoPdf.innerText; 
     documento.text(`Nombre: ${nombreUsuario}` +"\n" + texto  ,10, 10, align="left");
     documento.save(`ticket${nombreUsuario}.pdf`);
-}
 
+   
+}
 
 
 //INICIALIZACION
