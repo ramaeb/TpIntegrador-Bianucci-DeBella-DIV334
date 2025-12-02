@@ -75,11 +75,29 @@ Menu desplegable para el responsive
 #logo img{
     width: 4vw;
 }
+
 #titulo-nav{
     display: flex;
     justify-content: left;
 }
 
+#busqueda {
+    width: 110%;
+    height: 1.3rem;
+    margin-right: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+    outline: none;
+    transition: all 0.3s ease; 
+    border-radius: 5px;      
+    padding: 8px;            
+    font-size: 1rem;        
+}
+
+#busqueda:focus {
+    border-color: #0078D7;  
+    box-shadow: 0 0 8px rgba(0,120,215,0.3);
+}
 
 /*Division de incio, sobre nosotros etc.*/
 #div-ul-li{
@@ -601,5 +619,11 @@ nota: tener en cuenta que lo responsive va abajo del css por que si no causa con
     display: flex;
     text-align: center;
 }
+}
+
+@media (max-width: 768px) {
+    .barra-de-busqueda {
+        display: none; /* desaparece la barra */
+    }
 }
 
